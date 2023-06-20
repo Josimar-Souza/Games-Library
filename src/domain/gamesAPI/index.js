@@ -16,7 +16,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return ErrorCreator(e, message);
     }
@@ -28,7 +28,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
@@ -40,7 +40,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
@@ -52,7 +52,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
@@ -64,7 +64,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
@@ -76,7 +76,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
@@ -88,7 +88,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
@@ -100,7 +100,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
@@ -112,7 +112,7 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { data: { message } } = e;
+      const { response: { data: { message } } } = e;
 
       return new ErrorCreator(e, message);
     }
