@@ -27,8 +27,19 @@ function GamesContext({ children }) {
     }
   };
 
+  const getAllCategories = async () => {
+    const categoriesFounded = await gamesAPI.getAllCategories();
+
+    if (categoriesFounded instanceof ErrorCreator) {
+      sendNotification(categoriesFounded.customMessage, 'error');
+    } else {
+      setCategories(categoriesFounded);
+    }
+  };
+
   useEffect(() => {
     getAllGames();
+    getAllCategories();
   }, []);
 
   const contextValues = useMemo(() => ({
