@@ -1,10 +1,18 @@
 import React from 'react';
-import HeaderContainer from './headerStyles';
+import PropTypes from 'prop-types';
+import { HeaderContainer, HeaderTitle, CustomButton } from './headerStyles';
 
-function Header() {
+function Header({ title }) {
   return (
-    <HeaderContainer />
+    <HeaderContainer>
+      <HeaderTitle>{title}</HeaderTitle>
+      <CustomButton>Adicionar jogo</CustomButton>
+    </HeaderContainer>
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Header;

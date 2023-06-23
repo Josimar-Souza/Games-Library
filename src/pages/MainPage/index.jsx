@@ -1,9 +1,14 @@
 import React from 'react';
+import MainContent from './mainPageStyles';
 import Header from '../../components/Header';
 
 function MainPage() {
   return (
-    <Header />
+    <MainContent>
+      <Header
+        title="Games Library"
+      />
+    </MainContent>
   );
 }
 
