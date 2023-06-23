@@ -9,7 +9,6 @@ function Header({ title }) {
   const [addGameModal, setAddGameModal] = useState({ open: false, info: {} });
 
   const onAddCloseGameClicked = (value) => {
-    console.log('test');
     setAddGameModal({ ...addGameModal, open: value });
   };
 

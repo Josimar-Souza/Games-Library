@@ -10,6 +10,7 @@ export const CustomInput = styled(Input)`
   background: ${({ background }) => background};
   border: ${({ border }) => border};
   border-width: ${({ borderwidth }) => borderwidth};
+  border-radius: ${({ borderRadius }) => borderRadius};
   width: 100%;
 `;
 

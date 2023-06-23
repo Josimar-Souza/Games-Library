@@ -14,6 +14,9 @@ function Input({
   colon,
   initialValue,
   name,
+  borderRadius,
+  required,
+  type,
 }) {
   return (
     <CustomFormItem
@@ -23,12 +26,20 @@ function Input({
       colon={colon}
       width={width}
       margin={margin}
+      rules={[
+        {
+          required,
+          message: `${label} é necessário`,
+        },
+      ]}
     >
       <CustomInput
+        type={type}
         placeholder={placeholder}
         background={background}
         border={border}
         borderwidth={borderWidth}
+        borderRadius={borderRadius}
       />
     </CustomFormItem>
   );
@@ -46,6 +57,9 @@ Input.defaultProps = {
   colon: false,
   initialValue: '',
   name: '',
+  borderRadius: '5px',
+  required: false,
+  type: 'text',
 };
 
 Input.propTypes = {
@@ -60,6 +74,9 @@ Input.propTypes = {
   labelFontSize: PropTypes.string,
   initialValue: PropTypes.string,
   name: PropTypes.string,
+  borderRadius: PropTypes.string,
+  required: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default Input;
