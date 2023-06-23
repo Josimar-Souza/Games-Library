@@ -12,7 +12,7 @@ function Search() {
       <SearchIcon />
       <Input
         placeholder="Digite um termo para buscar"
-        width="70%"
+        width="80%"
         background="none"
         border="1px solid black"
         borderWidth="0 0 1px 0"
