@@ -17,7 +17,7 @@ function Input({
 }) {
   return (
     <CustomFormItem
-      label={<Label labelFontSize={labelFontSize}>{label}</Label>}
+      label={<Label labelfontsize={labelFontSize}>{label}</Label>}
       initialValue={initialValue}
       name={name}
       colon={colon}
@@ -28,7 +28,7 @@ function Input({
         placeholder={placeholder}
         background={background}
         border={border}
-        borderWidth={borderWidth}
+        borderwidth={borderWidth}
       />
     </CustomFormItem>
   );

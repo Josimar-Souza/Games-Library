@@ -9,10 +9,10 @@ export const CustomFormItem = styled(Form.Item)`
 export const CustomInput = styled(Input)`
   background: ${({ background }) => background};
   border: ${({ border }) => border};
-  border-width: ${({ borderWidth }) => borderWidth};
+  border-width: ${({ borderwidth }) => borderwidth};
   width: 100%;
 `;
 
 export const Label = styled.p`
-  font-size: ${({ labelFontSize }) => labelFontSize};
+  font-size: ${({ labelfontsize }) => labelfontsize};
 `;

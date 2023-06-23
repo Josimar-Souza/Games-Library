@@ -14,7 +14,7 @@ function Button({
     <CustomButton
       background={background}
       border={border}
-      borderWidth={borderWidth}
+      borderwidth={borderWidth}
       fontSize={fontSize}
       onClick={onClick}
     >
