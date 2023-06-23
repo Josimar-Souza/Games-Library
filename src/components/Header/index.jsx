@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HeaderContainer, HeaderTitle, CustomButton } from './headerStyles';
+import { HeaderContainer, HeaderTitle } from './headerStyles';
+import Button from '../Button';
 import Search from '../Search';
 
 function Header({ title }) {
@@ -8,7 +9,13 @@ function Header({ title }) {
     <HeaderContainer>
       <HeaderTitle>{title}</HeaderTitle>
       <Search />
-      <CustomButton>Adicionar jogo</CustomButton>
+      <Button
+        background="none"
+        border="1px solid black"
+        borderWidth="0 0 1px 0"
+      >
+        Adicionar jogo
+      </Button>
     </HeaderContainer>
   );
 }

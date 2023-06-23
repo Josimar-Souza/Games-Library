@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 export const SearchContainer = styled.div`
@@ -19,12 +19,4 @@ export const CustomInput = styled(Input)`
   border: none;
   border-bottom: 1px solid black;
   width: 70%;
-`;
-
-export const CustomButton = styled(Button)`
-  background: none;
-  border: none;
-  border-bottom: 1px solid black;
-  font-size: 14px;
-  height: fit-content;
 `;
