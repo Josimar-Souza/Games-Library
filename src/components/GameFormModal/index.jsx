@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CustomModal from './gameFormModalStyles';
 import Input from '../Input';
 import TextArea from '../TextArea';
+import DatePicker from '../DatePicker';
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
   return (
@@ -58,6 +59,15 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           colon
           margin="30px 0"
           required
+        />
+        <DatePicker
+          placeholder="Selecione a data de lançamento do jogo"
+          label="Data de lançamento"
+          name="releaseDate"
+          colon
+          margin="30px 0"
+          required
+          width="50%"
         />
         <Input
           placeholder="Digite a url do trailer do jogo"
