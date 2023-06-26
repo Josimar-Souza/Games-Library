@@ -3,7 +3,6 @@ import { Form } from 'antd';
 import PropTypes from 'prop-types';
 import CustomModal from './gameFormModalStyles';
 import Input from '../Input';
-import Button from '../Button';
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
   return (
@@ -12,21 +11,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       width="60%"
       onCancel={() => onAddCloseGameClicked(false)}
       title={title}
-      footer={[
-        <Button
-          background="red"
-          color="white"
-          onClick={() => onAddCloseGameClicked(false)}
-        >
-          Cancelar
-        </Button>,
-        <Button
-          background="#00d4ff"
-          color="white"
-        >
-          Salvar
-        </Button>,
-      ]}
+      footer={[]}
     >
       <Form layout="vertical">
         <Input

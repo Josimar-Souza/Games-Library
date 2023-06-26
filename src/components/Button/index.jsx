@@ -10,6 +10,7 @@ function Button({
   fontSize,
   onClick,
   color,
+  htmlType,
 }) {
   return (
     <CustomButton
@@ -19,6 +20,7 @@ function Button({
       fontSize={fontSize}
       onClick={onClick}
       color={color}
+      htmlType={htmlType}
     >
       {children}
     </CustomButton>
@@ -31,6 +33,7 @@ Button.defaultProps = {
   borderWidth: '1px',
   fontSize: '16px',
   color: 'black',
+  htmlType: 'button',
 };
 
 Button.propTypes = {
@@ -41,6 +44,7 @@ Button.propTypes = {
   fontSize: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   color: PropTypes.string,
+  htmlType: PropTypes.string,
 };
 
 export default Button;
