@@ -3,6 +3,7 @@ import { Form } from 'antd';
 import PropTypes from 'prop-types';
 import CustomModal from './gameFormModalStyles';
 import Input from '../Input';
+import TextArea from '../TextArea';
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
   return (
@@ -25,6 +26,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           margin="20px 0"
           required
         />
+        <TextArea />
         <Input
           placeholder="Digite o nome da desenvolvedora do jogo"
           border="1px solid black"
