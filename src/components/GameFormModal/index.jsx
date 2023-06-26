@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form } from 'antd';
 import PropTypes from 'prop-types';
 import CustomModal from './gameFormModalStyles';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import DatePicker from '../DatePicker';
+import Select from '../Select';
+import { gamesContext } from '../../context/gamesContext';
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
+  const { categories } = useContext(gamesContext);
+
+  const getCategoriesOption = () => {
+    const options = [];
+
+    categories.forEach(({ category }) => {
+      options.push({
+        label: category,
+        value: category,
+      });
+    });
+
+    return options;
+  };
+
   return (
     <CustomModal
       open={open}
@@ -125,6 +142,15 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           colon
           margin="30px 0"
           required
+        />
+        <Select
+          placeholder="Selecione um categoria"
+          label="Categoria"
+          name="category"
+          colon
+          margin="30px 0"
+          required
+          options={getCategoriesOption()}
         />
       </Form>
     </CustomModal>

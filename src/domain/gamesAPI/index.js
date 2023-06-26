@@ -26,7 +26,7 @@ class GamesAPI {
     try {
       const { data } = await this.api.get(`${baseURL}/categories`);
 
-      return data;
+      return data.categories;
     } catch (e) {
       const { response: { data: { message } } } = e;
 
