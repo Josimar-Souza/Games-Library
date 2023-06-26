@@ -23,10 +23,20 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Título"
           name="title"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
         />
-        <TextArea />
+        <TextArea
+          placeHolder="Digite a sinopse do jogo"
+          label="Sinopse"
+          name="sinopse"
+          colon
+          margin="30px 0"
+          required
+          maxLength={650}
+          showCount
+          resize="none"
+        />
         <Input
           placeholder="Digite o nome da desenvolvedora do jogo"
           border="1px solid black"
@@ -35,7 +45,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Desenvolvedora"
           name="developer"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
         />
         <Input
@@ -46,7 +56,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Publicadora"
           name="publisher"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
         />
         <Input
@@ -57,7 +67,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Url do trailer"
           name="trailerURL"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
         />
         <Input
@@ -68,7 +78,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Nota 'metascore' do Metacritic"
           name="metascore"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
           type="number"
         />
@@ -80,7 +90,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Nota 'usercore' do Metacritic"
           name="userscore"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
           type="number"
         />
@@ -92,7 +102,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Url da imagem"
           name="image"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
         />
         <Input
@@ -103,7 +113,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           label="Url da imagem de backdrop"
           name="backdrop"
           colon
-          margin="20px 0"
+          margin="30px 0"
           required
         />
       </Form>
