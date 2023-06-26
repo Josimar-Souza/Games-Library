@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextAreaFormItem, CustomTextArea } from './textAreaStyles';
+import { TextAreaFormItem, CustomTextArea, CustomLabel } from './textAreaStyles';
 
 function TextArea({
   label,
@@ -15,10 +15,11 @@ function TextArea({
   placeHolder,
   resize,
   height,
+  labelFontSize,
 }) {
   return (
     <TextAreaFormItem
-      label={label}
+      label={<CustomLabel labelFontSize={labelFontSize}>{label}</CustomLabel>}
       initialValue={initialValue}
       name={name}
       colon={colon}
@@ -56,6 +57,7 @@ TextArea.defaultProps = {
   placeHolder: '',
   resize: 'both',
   height: '120px',
+  labelFontSize: '16px',
 };
 
 TextArea.propTypes = {
@@ -71,6 +73,7 @@ TextArea.propTypes = {
   placeHolder: PropTypes.string,
   resize: PropTypes.string,
   height: PropTypes.string,
+  labelFontSize: PropTypes.string,
 };
 
 export default TextArea;

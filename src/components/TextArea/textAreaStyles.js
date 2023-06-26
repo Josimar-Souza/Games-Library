@@ -8,4 +8,8 @@ export const TextAreaFormItem = styled(Form.Item)`
   width: ${({ width }) => width};
 `;
 
+export const CustomLabel = styled.p`
+  font-size: ${({ labelFontSize }) => labelFontSize};
+`;
+
 export const CustomTextArea = styled(TextArea)``;
