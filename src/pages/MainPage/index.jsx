@@ -1,16 +1,25 @@
 import React from 'react';
-import MainContent from './mainPageStyles';
+import { useLocation, Outlet } from 'react-router-dom';
+import { MainContainer, GamesCardContainer, MainContent } from './mainPageStyles';
 import Header from '../../components/Header';
 import Sider from '../../components/Sider';
 
 function MainPage() {
+  const { pathname } = useLocation();
+
   return (
-    <MainContent>
+    <MainContainer>
       <Header
         title="Games Library"
       />
-      <Sider />
-    </MainContent>
+      <MainContent>
+        <Sider />
+        {pathname === '/'
+          ? (
+            <GamesCardContainer />
+          ) : <Outlet />}
+      </MainContent>
+    </MainContainer>
   );
 }
 
