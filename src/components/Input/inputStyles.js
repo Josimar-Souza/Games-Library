@@ -12,6 +12,10 @@ export const CustomInput = styled(Input)`
   border-width: ${({ borderwidth }) => borderwidth};
   border-radius: ${({ borderRadius }) => borderRadius};
   width: 100%;
+
+  &:hover {
+    border-width: ${({ borderwidth }) => borderwidth};
+  }
 `;
 
 export const Label = styled.p`
