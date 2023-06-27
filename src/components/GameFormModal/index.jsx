@@ -232,7 +232,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           margin="30px 0"
           required
           options={getCategoriesOption()}
-          helper="Caso não encontre a categoria deseja, a adicione primeiro no final do formulário"
+          helper="Caso não encontre a categoria desejada, adicione-a primeiro no final do formulário"
         />
         <FormSectionTitle>Plataformas</FormSectionTitle>
         <Form.List name="platforms">
