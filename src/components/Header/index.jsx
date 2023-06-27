@@ -28,7 +28,6 @@ function Header({ title }) {
       </Button>
       <GameFormModal
         open={addGameModal.open}
-        info={addGameModal.info}
         onAddCloseGameClicked={onAddCloseGameClicked}
         title="Adicione um jogo"
       />

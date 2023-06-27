@@ -24,7 +24,12 @@ import sendNotification from '../../helpers/senNotification';
 
 const gamesAPI = new GamesAPI();
 
-function GameFormModal({ open, onAddCloseGameClicked, title }) {
+function GameFormModal({
+  open,
+  onAddCloseGameClicked,
+  title,
+  info,
+}) {
   const { categories, getAllCategories } = useContext(gamesContext);
   const [categoryToAdd, setCategoryToAdd] = useState('');
   const [form] = Form.useForm();
@@ -43,6 +48,10 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
   };
 
   const getPlatforms = (platforms) => {
+    if (!platforms || platforms.length === 0) {
+      return [];
+    }
+
     const formattedPlatforms = [];
 
     platforms.forEach(({ platform }) => {
@@ -71,6 +80,11 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       metascore: +metascore,
     };
     newGame.platforms = getPlatforms(platforms);
+
+    if (newGame.platforms.length === 0) {
+      sendNotification('Por favor, adicione ao menos uma plataforma', 'error');
+      return;
+    }
 
     const result = await gamesAPI.addNewGame(newGame);
 
@@ -114,7 +128,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       footer={[]}
       destroyOnClose
     >
-      <Form layout="vertical" onFinish={onFinished} form={form}>
+      <Form layout="vertical" onFinish={onFinished} form={form} initialValues={info}>
         <Input
           placeholder="Digite o nome do jogo"
           border="1px solid black"
@@ -326,10 +340,15 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
   );
 }
 
+GameFormModal.defaultProps = {
+  info: {},
+};
+
 GameFormModal.propTypes = {
   open: PropTypes.bool.isRequired,
   onAddCloseGameClicked: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  info: PropTypes.shape({}),
 };
 
 export default GameFormModal;
