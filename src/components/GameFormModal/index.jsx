@@ -1,7 +1,14 @@
 import React, { useContext } from 'react';
-import { Form } from 'antd';
+import { Form, Divider } from 'antd';
 import PropTypes from 'prop-types';
-import { CustomModal, FormListContainer, FormListContent } from './gameFormModalStyles';
+import {
+  CustomModal,
+  FormListContainer,
+  FormListContent,
+  CustomRemoveIcon,
+  CustomAddIcon,
+  FormSectionTitle,
+} from './gameFormModalStyles';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import DatePicker from '../DatePicker';
@@ -153,7 +160,8 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           required
           options={getCategoriesOption()}
         />
-        <Form.List name="platforms">
+        <FormSectionTitle>Plataformas</FormSectionTitle>
+        <Form.List name="platforms" initialValue={[{ 'platform-0': '' }]}>
           {(fields, { add, remove }) => (
             <FormListContainer>
               {fields.map(({ key, name, ...restFields }) => (
@@ -170,22 +178,28 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
                     margin="30px 0"
                     name={['platform', name]}
                     required
+                    width="80%"
                     {...restFields}
                   />
                   <Button
                     onClick={() => remove(name)}
-                    margin="0 auto"
                     display="block"
+                    background="none"
+                    color="red"
                   >
-                    remover plataforma
+                    <CustomRemoveIcon />
                   </Button>
                 </FormListContent>
               ))}
+              <Divider />
               <Button
                 onClick={() => add()}
-                margin="0 auto"
                 display="block"
+                background="none"
+                border="1px solid black"
+                borderWidth="0 0 1px 0"
               >
+                <CustomAddIcon />
                 Adicionar plataforma
               </Button>
             </FormListContainer>
