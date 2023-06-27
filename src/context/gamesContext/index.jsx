@@ -59,7 +59,7 @@ function GamesContext({ children }) {
     getAllGames,
     getAllCategories,
     searchByCategory,
-  }), [games, categories]);
+  }), [games, categories, gamesToShow]);
 
   return (
     <gamesContext.Provider value={contextValues}>
