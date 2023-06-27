@@ -9,6 +9,7 @@ import {
   CustomAddIcon,
   FormSectionTitle,
   ButtonsContainer,
+  AddCategoryContainer,
 } from './gameFormModalStyles';
 import Input from '../Input';
 import TextArea from '../TextArea';
@@ -272,6 +273,26 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           </Button>
         </ButtonsContainer>
       </Form>
+      <Divider />
+      <AddCategoryContainer>
+        <Input
+          placeholder="Digite a categoria"
+          border="1px solid black"
+          borderWidth="0 0 1px 0"
+          borderRadius="0"
+          label="Categoria"
+          name="backdrop"
+          colon
+          margin="30px 0"
+          width="70%"
+        />
+        <Button
+          background="#5be6ff"
+          color="#494949"
+        >
+          Adicionar categoria
+        </Button>
+      </AddCategoryContainer>
     </CustomModal>
   );
 }

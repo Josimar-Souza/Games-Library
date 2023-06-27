@@ -29,3 +29,12 @@ export const ButtonsContainer = styled.div`
   justify-content: flex-end;
   margin-top: 20px;
 `;
+
+export const AddCategoryContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  min-height: 50px;
+  width: 100%;
+`;
