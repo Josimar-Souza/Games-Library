@@ -119,11 +119,16 @@ function GameFormModal({
     }
   };
 
+  const onCancel = () => {
+    form.resetFields();
+    onAddCloseGameClicked(false);
+  };
+
   return (
     <CustomModal
       open={open}
       width="60%"
-      onCancel={() => onAddCloseGameClicked(false)}
+      onCancel={onCancel}
       title={title}
       footer={[]}
       destroyOnClose
@@ -300,7 +305,7 @@ function GameFormModal({
             margin="0 10px"
             background="red"
             color="white"
-            onClick={() => onAddCloseGameClicked(false)}
+            onClick={onCancel}
           >
             Cancelar
           </Button>
