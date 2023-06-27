@@ -25,7 +25,7 @@ function GamesContext({ children }) {
       sendNotification(gamesFounded.customMessage, 'error');
     } else {
       setGames(gamesFounded);
-      setGamesToShow(gamesToShow);
+      setGamesToShow(gamesFounded);
     }
   };
 
