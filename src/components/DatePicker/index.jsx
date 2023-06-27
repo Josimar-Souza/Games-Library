@@ -14,6 +14,7 @@ function DatePicker({
   dateFormat,
   placeholder,
   labelFontSize,
+  helper,
 }) {
   return (
     <DatePickerFormItem
@@ -36,6 +37,7 @@ function DatePicker({
           message: `${label} é necessário`,
         },
       ]}
+      tooltip={helper}
     >
       <CustomDatePicker
         format={dateFormat}
@@ -55,6 +57,7 @@ DatePicker.defaultProps = {
   dateFormat: 'DD/MM/YYYY',
   placeholder: 'Selecione a data',
   labelFontSize: '16px',
+  helper: '',
 };
 
 DatePicker.propTypes = {
@@ -68,6 +71,7 @@ DatePicker.propTypes = {
   dateFormat: PropTypes.string,
   placeholder: PropTypes.string,
   labelFontSize: PropTypes.string,
+  helper: PropTypes.string,
 };
 
 export default DatePicker;

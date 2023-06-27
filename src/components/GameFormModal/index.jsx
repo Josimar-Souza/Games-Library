@@ -84,6 +84,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       onCancel={() => onAddCloseGameClicked(false)}
       title={title}
       footer={[]}
+      destroyOnClose
     >
       <Form layout="vertical" onFinish={onFinished}>
         <Input
@@ -104,9 +105,10 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           colon
           margin="30px 0"
           required
-          maxLength={650}
+          maxLength={2000}
           showCount
           resize="none"
+          autoSize
         />
         <Input
           placeholder="Digite o nome da desenvolvedora do jogo"
@@ -204,6 +206,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           margin="30px 0"
           required
           options={getCategoriesOption()}
+          helper="Caso não encontre a categoria deseja, a adicione primeiro no final do formulário"
         />
         <FormSectionTitle>Plataformas</FormSectionTitle>
         <Form.List name="platforms">

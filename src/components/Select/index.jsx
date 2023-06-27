@@ -12,6 +12,7 @@ function Select({
   labelFontSize,
   options,
   placeholder,
+  helper,
 }) {
   return (
     <SelectFormItem
@@ -34,6 +35,7 @@ function Select({
           message: `${label} é necessário`,
         },
       ]}
+      tooltip={helper}
     >
       <CustomSelect
         options={options}
@@ -53,6 +55,7 @@ Select.defaultProps = {
   labelFontSize: '16px',
   options: [],
   placeholder: '',
+  helper: '',
 };
 
 Select.propTypes = {
@@ -68,6 +71,7 @@ Select.propTypes = {
     value: PropTypes.string.isRequired,
   }),
   placeholder: PropTypes.string,
+  helper: PropTypes.string,
 };
 
 export default Select;

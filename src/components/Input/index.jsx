@@ -17,6 +17,7 @@ function Input({
   borderRadius,
   required,
   type,
+  helper,
   ...restvalues
 }) {
   return (
@@ -40,6 +41,7 @@ function Input({
           message: `${label} é necessário`,
         },
       ]}
+      tooltip={helper}
       {...restvalues}
     >
       <CustomInput
@@ -69,6 +71,7 @@ Input.defaultProps = {
   borderRadius: '5px',
   required: false,
   type: 'text',
+  helper: '',
 };
 
 Input.propTypes = {
@@ -86,6 +89,7 @@ Input.propTypes = {
   borderRadius: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
+  helper: PropTypes.string,
 };
 
 export default Input;

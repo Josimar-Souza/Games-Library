@@ -16,6 +16,8 @@ function TextArea({
   resize,
   height,
   labelFontSize,
+  autoSize,
+  helper,
 }) {
   return (
     <TextAreaFormItem
@@ -38,6 +40,7 @@ function TextArea({
           message: `${label} é necessário`,
         },
       ]}
+      tooltip={helper}
     >
       <CustomTextArea
         showCount={showCount}
@@ -47,6 +50,7 @@ function TextArea({
           height,
           resize,
         }}
+        autoSize={autoSize}
       />
     </TextAreaFormItem>
   );
@@ -65,6 +69,8 @@ TextArea.defaultProps = {
   resize: 'both',
   height: '120px',
   labelFontSize: '16px',
+  autoSize: false,
+  helper: '',
 };
 
 TextArea.propTypes = {
@@ -81,6 +87,8 @@ TextArea.propTypes = {
   resize: PropTypes.string,
   height: PropTypes.string,
   labelFontSize: PropTypes.string,
+  autoSize: PropTypes.bool,
+  helper: PropTypes.string,
 };
 
 export default TextArea;
