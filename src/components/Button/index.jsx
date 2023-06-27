@@ -11,6 +11,8 @@ function Button({
   onClick,
   color,
   htmlType,
+  margin,
+  display,
 }) {
   return (
     <CustomButton
@@ -21,6 +23,8 @@ function Button({
       onClick={onClick}
       color={color}
       htmlType={htmlType}
+      margin={margin}
+      display={display}
     >
       {children}
     </CustomButton>
@@ -34,6 +38,8 @@ Button.defaultProps = {
   fontSize: '16px',
   color: 'black',
   htmlType: 'button',
+  margin: '0',
+  display: 'inline',
 };
 
 Button.propTypes = {
@@ -45,6 +51,8 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   color: PropTypes.string,
   htmlType: PropTypes.string,
+  margin: PropTypes.string,
+  display: PropTypes.string,
 };
 
 export default Button;

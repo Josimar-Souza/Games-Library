@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { Form } from 'antd';
 import PropTypes from 'prop-types';
-import CustomModal from './gameFormModalStyles';
+import { CustomModal, FormListContainer, FormListContent } from './gameFormModalStyles';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import DatePicker from '../DatePicker';
 import Select from '../Select';
+import Button from '../Button';
 import { gamesContext } from '../../context/gamesContext';
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
@@ -152,6 +153,44 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           required
           options={getCategoriesOption()}
         />
+        <Form.List name="platforms">
+          {(fields, { add, remove }) => (
+            <FormListContainer>
+              {fields.map(({ key, name, ...restFields }) => (
+                <FormListContent
+                  key={key}
+                >
+                  <Input
+                    placeholder="Digite a plataforma"
+                    label={`Plataforma ${name + 1}`}
+                    border="1px solid black"
+                    borderWidth="0 0 1px 0"
+                    borderRadius="0"
+                    colon
+                    margin="30px 0"
+                    name={['platform', name]}
+                    required
+                    {...restFields}
+                  />
+                  <Button
+                    onClick={() => remove(name)}
+                    margin="0 auto"
+                    display="block"
+                  >
+                    remover plataforma
+                  </Button>
+                </FormListContent>
+              ))}
+              <Button
+                onClick={() => add()}
+                margin="0 auto"
+                display="block"
+              >
+                Adicionar plataforma
+              </Button>
+            </FormListContainer>
+          )}
+        </Form.List>
       </Form>
     </CustomModal>
   );

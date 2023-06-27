@@ -17,6 +17,7 @@ function Input({
   borderRadius,
   required,
   type,
+  ...restvalues
 }) {
   return (
     <CustomFormItem
@@ -32,6 +33,7 @@ function Input({
           message: `${label} é necessário`,
         },
       ]}
+      {...restvalues}
     >
       <CustomInput
         type={type}

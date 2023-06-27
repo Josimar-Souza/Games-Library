@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Modal } from 'antd';
 
-const CustomModal = styled(Modal)``;
+export const CustomModal = styled(Modal)``;
 
-export default CustomModal;
+export const FormListContainer = styled.div`
+  border: 1px solid red;
+`;
+
+export const FormListContent = styled.div``;
