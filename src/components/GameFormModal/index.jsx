@@ -57,6 +57,8 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       metascore,
       userscore,
       platforms,
+      releaseDate,
+      addCategory,
       ...rest
     } = values;
 
@@ -99,7 +101,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       sendNotification('Categoria adicionada com sucesso!', 'success');
       setCategoryToAdd('');
       getAllCategories();
-      form.setFieldValue('add_category', '');
+      form.setFieldValue('addCategory', '');
     }
   };
 
@@ -305,7 +307,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
             borderWidth="0 0 1px 0"
             borderRadius="0"
             label="Categoria"
-            name="add_category"
+            name="addCategory"
             colon
             margin="30px 0"
             width="70%"
