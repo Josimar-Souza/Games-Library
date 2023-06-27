@@ -17,6 +17,11 @@ import Select from '../Select';
 import Button from '../Button';
 import { gamesContext } from '../../context/gamesContext';
 import dateFormatter from '../../helpers/dateFormatter';
+import GamesAPI from '../../domain/gamesAPI';
+import ErrorCreator from '../../helpers/ErrorCreator';
+import sendNotification from '../../helpers/senNotification';
+
+const gamesAPI = new GamesAPI();
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
   const { categories } = useContext(gamesContext);
@@ -34,9 +39,42 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
     return options;
   };
 
-  const onFinished = (values) => {
+  const getPlatforms = (platforms) => {
+    const formattedPlatforms = [];
+
+    platforms.forEach(({ platform }) => {
+      formattedPlatforms.push(platform);
+    });
+
+    return formattedPlatforms;
+  };
+
+  const onFinished = async (values) => {
+    const {
+      metascore,
+      userscore,
+      platforms,
+      ...rest
+    } = values;
+
+    const newGame = { ...rest };
     const formattedDate = dateFormatter(values.releaseDate);
-    console.log(formattedDate);
+
+    newGame.releaseYear = formattedDate;
+    newGame.metacritic = {
+      userscore: +userscore,
+      metascore: +metascore,
+    };
+    newGame.platforms = getPlatforms(platforms);
+
+    const result = await gamesAPI.addNewGame(newGame);
+
+    if (result instanceof ErrorCreator) {
+      sendNotification(result.customMessage, 'error');
+    } else {
+      sendNotification('Jogo adicionado com sucesso!', 'success');
+      onAddCloseGameClicked(false);
+    }
   };
 
   return (
