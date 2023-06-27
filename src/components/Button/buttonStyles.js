@@ -5,6 +5,7 @@ const CustomButton = styled(Button)`
   background: ${({ background }) => background};
   border: ${({ border }) => border};
   border-width: ${({ borderwidth }) => borderwidth};
+  border-radius: ${({ borderradius }) => borderradius};
   color: ${({ color }) => color};
   display: ${({ display }) => display};
   font-size: ${({ fontSize }) => fontSize};

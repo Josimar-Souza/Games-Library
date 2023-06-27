@@ -7,6 +7,7 @@ function Button({
   background,
   border,
   borderWidth,
+  borderRadius,
   fontSize,
   onClick,
   color,
@@ -25,6 +26,7 @@ function Button({
       htmlType={htmlType}
       margin={margin}
       display={display}
+      borderradius={borderRadius}
     >
       {children}
     </CustomButton>
@@ -40,6 +42,7 @@ Button.defaultProps = {
   htmlType: 'button',
   margin: '0',
   display: 'inline',
+  borderRadius: '5px',
 };
 
 Button.propTypes = {
@@ -53,6 +56,7 @@ Button.propTypes = {
   htmlType: PropTypes.string,
   margin: PropTypes.string,
   display: PropTypes.string,
+  borderRadius: PropTypes.string,
 };
 
 export default Button;

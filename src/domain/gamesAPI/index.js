@@ -50,7 +50,7 @@ class GamesAPI {
     try {
       const { data } = await this.api.get(`${baseURL}/games`);
 
-      return data;
+      return data.games;
     } catch (e) {
       const { response: { data: { message } } } = e;
 
