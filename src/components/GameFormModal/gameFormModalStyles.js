@@ -23,3 +23,9 @@ export const CustomAddIcon = styled(PlusCircleOutlined)`
 export const FormSectionTitle = styled.h1`
   font-size: 20px;
 `;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+`;

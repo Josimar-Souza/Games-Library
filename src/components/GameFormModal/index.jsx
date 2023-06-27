@@ -8,6 +8,7 @@ import {
   CustomRemoveIcon,
   CustomAddIcon,
   FormSectionTitle,
+  ButtonsContainer,
 } from './gameFormModalStyles';
 import Input from '../Input';
 import TextArea from '../TextArea';
@@ -15,6 +16,7 @@ import DatePicker from '../DatePicker';
 import Select from '../Select';
 import Button from '../Button';
 import { gamesContext } from '../../context/gamesContext';
+import dateFormatter from '../../helpers/dateFormatter';
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
   const { categories } = useContext(gamesContext);
@@ -32,6 +34,11 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
     return options;
   };
 
+  const onFinished = (values) => {
+    const formattedDate = dateFormatter(values.releaseDate);
+    console.log(formattedDate);
+  };
+
   return (
     <CustomModal
       open={open}
@@ -40,7 +47,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       title={title}
       footer={[]}
     >
-      <Form layout="vertical">
+      <Form layout="vertical" onFinish={onFinished}>
         <Input
           placeholder="Digite o nome do jogo"
           border="1px solid black"
@@ -161,7 +168,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
           options={getCategoriesOption()}
         />
         <FormSectionTitle>Plataformas</FormSectionTitle>
-        <Form.List name="platforms" initialValue={[{ 'platform-0': '' }]}>
+        <Form.List name="platforms">
           {(fields, { add, remove }) => (
             <FormListContainer>
               {fields.map(({ key, name, ...restFields }) => (
@@ -176,7 +183,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
                     borderRadius="0"
                     colon
                     margin="30px 0"
-                    name={['platform', name]}
+                    name={[name, 'platform']}
                     required
                     width="80%"
                     {...restFields}
@@ -205,6 +212,24 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
             </FormListContainer>
           )}
         </Form.List>
+        <ButtonsContainer>
+          <Button
+            margin="0 10px"
+            background="red"
+            color="white"
+            onClick={() => onAddCloseGameClicked(false)}
+          >
+            Cancelar
+          </Button>
+          <Button
+            margin="0 10px"
+            background="#00e012"
+            color="white"
+            htmlType="submit"
+          >
+            Salvar
+          </Button>
+        </ButtonsContainer>
       </Form>
     </CustomModal>
   );
