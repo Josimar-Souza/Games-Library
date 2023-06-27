@@ -14,21 +14,44 @@ function Input({
   colon,
   initialValue,
   name,
+  borderRadius,
+  required,
+  type,
+  helper,
+  onChange,
+  ...restvalues
 }) {
   return (
     <CustomFormItem
-      label={<Label labelfontsize={labelFontSize}>{label}</Label>}
+      label={(
+        <Label
+          labelfontsize={labelFontSize}
+        >
+          {label}
+        </Label>
+      )}
       initialValue={initialValue}
       name={name}
       colon={colon}
       width={width}
       margin={margin}
+      rules={[
+        {
+          required,
+          message: `${label} é necessário`,
+        },
+      ]}
+      tooltip={helper}
+      {...restvalues}
     >
       <CustomInput
+        type={type}
         placeholder={placeholder}
         background={background}
         border={border}
         borderwidth={borderWidth}
+        borderRadius={borderRadius}
+        onChange={onChange}
       />
     </CustomFormItem>
   );
@@ -46,6 +69,11 @@ Input.defaultProps = {
   colon: false,
   initialValue: '',
   name: '',
+  borderRadius: '5px',
+  required: false,
+  type: 'text',
+  helper: '',
+  onChange: () => {},
 };
 
 Input.propTypes = {
@@ -60,6 +88,11 @@ Input.propTypes = {
   labelFontSize: PropTypes.string,
   initialValue: PropTypes.string,
   name: PropTypes.string,
+  borderRadius: PropTypes.string,
+  required: PropTypes.bool,
+  type: PropTypes.string,
+  helper: PropTypes.string,
+  onChange: PropTypes.string,
 };
 
 export default Input;
