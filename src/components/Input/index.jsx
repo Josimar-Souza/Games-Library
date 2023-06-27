@@ -21,7 +21,14 @@ function Input({
 }) {
   return (
     <CustomFormItem
-      label={<Label labelfontsize={labelFontSize}>{label}</Label>}
+      label={(
+        <Label
+          labelfontsize={labelFontSize}
+        >
+          {label}
+          {colon ? ':' : ''}
+        </Label>
+      )}
       initialValue={initialValue}
       name={name}
       colon={colon}

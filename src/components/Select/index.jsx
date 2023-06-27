@@ -15,7 +15,14 @@ function Select({
 }) {
   return (
     <SelectFormItem
-      label={<CustomLabel labelFontSize={labelFontSize}>{label}</CustomLabel>}
+      label={(
+        <CustomLabel
+          labelFontSize={labelFontSize}
+        >
+          {label}
+          {colon ? ':' : ''}
+        </CustomLabel>
+      )}
       initialValue={options[0]?.value || ''}
       name={name}
       colon={colon}

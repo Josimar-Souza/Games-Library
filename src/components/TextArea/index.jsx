@@ -19,7 +19,14 @@ function TextArea({
 }) {
   return (
     <TextAreaFormItem
-      label={<CustomLabel labelFontSize={labelFontSize}>{label}</CustomLabel>}
+      label={(
+        <CustomLabel
+          labelFontSize={labelFontSize}
+        >
+          {label}
+          {colon ? ':' : ''}
+        </CustomLabel>
+      )}
       initialValue={initialValue}
       name={name}
       colon={colon}
