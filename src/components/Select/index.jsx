@@ -21,7 +21,6 @@ function Select({
           labelFontSize={labelFontSize}
         >
           {label}
-          {colon ? ':' : ''}
         </CustomLabel>
       )}
       initialValue={options[0]?.value || ''}

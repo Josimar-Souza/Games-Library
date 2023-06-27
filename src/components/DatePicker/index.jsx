@@ -23,7 +23,6 @@ function DatePicker({
           labelFontSize={labelFontSize}
         >
           {label}
-          {colon ? ':' : ''}
         </CustomLabel>
       )}
       initialValue={initialValue}

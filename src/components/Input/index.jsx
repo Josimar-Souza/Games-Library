@@ -28,7 +28,6 @@ function Input({
           labelfontsize={labelFontSize}
         >
           {label}
-          {colon ? ':' : ''}
         </Label>
       )}
       initialValue={initialValue}
