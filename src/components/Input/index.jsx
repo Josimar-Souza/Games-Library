@@ -18,6 +18,7 @@ function Input({
   required,
   type,
   helper,
+  onChange,
   ...restvalues
 }) {
   return (
@@ -51,6 +52,7 @@ function Input({
         border={border}
         borderwidth={borderWidth}
         borderRadius={borderRadius}
+        onChange={onChange}
       />
     </CustomFormItem>
   );
@@ -72,6 +74,7 @@ Input.defaultProps = {
   required: false,
   type: 'text',
   helper: '',
+  onChange: () => {},
 };
 
 Input.propTypes = {
@@ -90,6 +93,7 @@ Input.propTypes = {
   required: PropTypes.bool,
   type: PropTypes.string,
   helper: PropTypes.string,
+  onChange: PropTypes.string,
 };
 
 export default Input;

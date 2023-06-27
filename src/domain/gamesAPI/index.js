@@ -18,7 +18,7 @@ class GamesAPI {
     } catch (e) {
       const { response: { data: { message } } } = e;
 
-      return ErrorCreator(e, message);
+      return new ErrorCreator(e, message);
     }
   }
 

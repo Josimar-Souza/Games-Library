@@ -48,6 +48,7 @@ function GamesContext({ children }) {
     categories,
     setCategories,
     getAllGames,
+    getAllCategories,
   }), [games, categories]);
 
   return (

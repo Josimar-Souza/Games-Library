@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Divider } from 'antd';
 import PropTypes from 'prop-types';
 import {
@@ -25,7 +25,9 @@ import sendNotification from '../../helpers/senNotification';
 const gamesAPI = new GamesAPI();
 
 function GameFormModal({ open, onAddCloseGameClicked, title }) {
-  const { categories } = useContext(gamesContext);
+  const { categories, getAllCategories } = useContext(gamesContext);
+  const [categoryToAdd, setCategoryToAdd] = useState('');
+  const [form] = Form.useForm();
 
   const getCategoriesOption = () => {
     const options = [];
@@ -78,6 +80,29 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
     }
   };
 
+  const onCategoryInputChange = ({ target: { value } }) => {
+    console.log(value);
+    setCategoryToAdd(value);
+  };
+
+  const onAddCategoryClick = async () => {
+    if (categoryToAdd === '') {
+      sendNotification('Por favor, digite uma categoria válida', 'error');
+      return;
+    }
+
+    const result = await gamesAPI.addNewCategory({ category: categoryToAdd });
+
+    if (result instanceof ErrorCreator) {
+      sendNotification(result.customMessage, 'error');
+    } else {
+      sendNotification('Categoria adicionada com sucesso!', 'success');
+      setCategoryToAdd('');
+      getAllCategories();
+      form.setFieldValue('add_category', '');
+    }
+  };
+
   return (
     <CustomModal
       open={open}
@@ -87,7 +112,7 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
       footer={[]}
       destroyOnClose
     >
-      <Form layout="vertical" onFinish={onFinished}>
+      <Form layout="vertical" onFinish={onFinished} form={form}>
         <Input
           placeholder="Digite o nome do jogo"
           border="1px solid black"
@@ -272,27 +297,29 @@ function GameFormModal({ open, onAddCloseGameClicked, title }) {
             Salvar
           </Button>
         </ButtonsContainer>
+        <Divider />
+        <AddCategoryContainer>
+          <Input
+            placeholder="Digite a categoria"
+            border="1px solid black"
+            borderWidth="0 0 1px 0"
+            borderRadius="0"
+            label="Categoria"
+            name="add_category"
+            colon
+            margin="30px 0"
+            width="70%"
+            onChange={onCategoryInputChange}
+          />
+          <Button
+            background="#5be6ff"
+            color="#494949"
+            onClick={onAddCategoryClick}
+          >
+            Adicionar categoria
+          </Button>
+        </AddCategoryContainer>
       </Form>
-      <Divider />
-      <AddCategoryContainer>
-        <Input
-          placeholder="Digite a categoria"
-          border="1px solid black"
-          borderWidth="0 0 1px 0"
-          borderRadius="0"
-          label="Categoria"
-          name="backdrop"
-          colon
-          margin="30px 0"
-          width="70%"
-        />
-        <Button
-          background="#5be6ff"
-          color="#494949"
-        >
-          Adicionar categoria
-        </Button>
-      </AddCategoryContainer>
     </CustomModal>
   );
 }
