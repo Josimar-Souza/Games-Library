@@ -15,6 +15,7 @@ const gamesAPI = new GamesAPI();
 
 function GamesContext({ children }) {
   const [games, setGames] = useState([]);
+  const [gamesToShow, setGamesToShow] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const getAllGames = async () => {
@@ -24,6 +25,7 @@ function GamesContext({ children }) {
       sendNotification(gamesFounded.customMessage, 'error');
     } else {
       setGames(gamesFounded);
+      setGamesToShow(gamesToShow);
     }
   };
 
@@ -37,6 +39,12 @@ function GamesContext({ children }) {
     }
   };
 
+  const searchByCategory = (category) => {
+    const gamesSearched = games.filter((game) => game.category === category);
+
+    setGamesToShow(gamesSearched);
+  };
+
   useEffect(() => {
     getAllGames();
     getAllCategories();
@@ -44,11 +52,13 @@ function GamesContext({ children }) {
 
   const contextValues = useMemo(() => ({
     games,
+    gamesToShow,
     setGames,
     categories,
     setCategories,
     getAllGames,
     getAllCategories,
+    searchByCategory,
   }), [games, categories]);
 
   return (
