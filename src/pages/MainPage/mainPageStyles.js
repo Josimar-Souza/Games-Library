@@ -13,7 +13,6 @@ export const MainContent = styled.div`
 
 export const GamesCardContainer = styled.div`
   align-items: flex-start;
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

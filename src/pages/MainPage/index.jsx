@@ -21,7 +21,7 @@ function MainPage() {
           ? (
             <GamesCardContainer>
               {gamesToShow.map(({ _id, ...game }) => (
-                <GameCard key={_id} game={game} />
+                <GameCard key={_id} game={game} _id={_id} />
               ))}
             </GamesCardContainer>
           ) : <Outlet />}
