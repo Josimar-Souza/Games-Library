@@ -25,7 +25,7 @@ function GamesContext({ children }) {
       sendNotification(gamesFounded.customMessage, 'error');
     } else {
       setGames(gamesFounded);
-      setGamesToShow(gamesToShow);
+      setGamesToShow(gamesFounded);
     }
   };
 
@@ -46,6 +46,10 @@ function GamesContext({ children }) {
   };
 
   useEffect(() => {
+    sendNotification(
+      'Esse projeto utiliza uma api própria que foi publicada no Render gratuitamente e pode estar hibernando, então se não carregar, por favor recarrege a página até aparecer',
+    );
+
     getAllGames();
     getAllCategories();
   }, []);
@@ -59,7 +63,7 @@ function GamesContext({ children }) {
     getAllGames,
     getAllCategories,
     searchByCategory,
-  }), [games, categories]);
+  }), [games, categories, gamesToShow]);
 
   return (
     <gamesContext.Provider value={contextValues}>

@@ -12,8 +12,9 @@ function Sider() {
 
   return (
     <SiderContainer>
-      {categories.map(({ category }) => (
+      {categories.map(({ category, _id }) => (
         <Button
+          key={_id}
           margin="10px 0"
           background="rgba(255, 255, 255, 0.2)"
           border="none"
