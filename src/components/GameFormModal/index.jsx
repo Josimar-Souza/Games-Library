@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, Divider } from 'antd';
 import PropTypes from 'prop-types';
 import {
@@ -30,9 +31,10 @@ function GameFormModal({
   info,
   type,
 }) {
-  const { categories, getAllCategories } = useContext(gamesContext);
+  const { categories, getAllCategories, getAllGames } = useContext(gamesContext);
   const [categoryToAdd, setCategoryToAdd] = useState('');
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const getCategoriesOption = () => {
     const options = [];
@@ -105,6 +107,9 @@ function GameFormModal({
     } else {
       sendNotification(message, 'success');
       cancelCallback(false);
+
+      getAllGames();
+      navigate('/');
     }
   };
 
