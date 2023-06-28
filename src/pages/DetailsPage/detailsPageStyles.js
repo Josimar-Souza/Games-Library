@@ -107,3 +107,13 @@ export const TrailerView = styled.iframe`
   min-height: 200px;
   width: 80%;
 `;
+
+export const MetacriticScore = styled.p`
+  background-color: ${({ background }) => background};
+  border-radius: 50%;
+  color: black;
+  display: inline;
+  margin-left: 10px;
+  padding: 5px;
+  width: 10%;
+`;

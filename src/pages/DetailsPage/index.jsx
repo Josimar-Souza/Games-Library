@@ -15,6 +15,7 @@ import {
   PlatformsContainer,
   VerticalDivider,
   TrailerView,
+  MetacriticScore,
 } from './detailsPageStyles';
 import GamesAPI from '../../domain/gamesAPI';
 import ErrorCreator from '../../helpers/ErrorCreator';
@@ -64,6 +65,34 @@ function DetailsPage() {
     navigate('/');
   };
 
+  const getScoreBackground = (score, type = 'userscore') => {
+    const good = '#65ff00';
+    const middle = '#ffe900';
+    const bad = '#ff7b00';
+
+    if (type === 'metascore') {
+      if (score >= 80) {
+        return good;
+      }
+
+      if (score >= 50 && score < 80) {
+        return middle;
+      }
+
+      return bad;
+    }
+
+    if (score >= 8) {
+      return good;
+    }
+
+    if (score >= 5 && score < 8) {
+      return middle;
+    }
+
+    return bad;
+  };
+
   return (
     <DetailsContainer image={backdrop}>
       <BackButtonContainer>
@@ -98,8 +127,18 @@ function DetailsPage() {
           <HorizontalDivider />
           <Title margin="10px 0">Metacritic</Title>
           <HorizontalContainer>
-            <Info>{`Metascore: ${metacritic.metascore}`}</Info>
-            <Info>{`Userscore: ${metacritic.userscore}`}</Info>
+            <Info>
+              Metascore:
+              <MetacriticScore background={getScoreBackground(metacritic.metascore, 'metascore')}>
+                {metacritic.metascore}
+              </MetacriticScore>
+            </Info>
+            <Info>
+              Userscore:
+              <MetacriticScore background={getScoreBackground(metacritic.userscore)}>
+                {metacritic.userscore}
+              </MetacriticScore>
+            </Info>
           </HorizontalContainer>
           <HorizontalDivider />
           <Title margin="10px 0">Trailer</Title>
