@@ -32,6 +32,7 @@ export const BackButtonContainer = styled.div`
 
 export const CustomBackIcon = styled(LeftCircleOutlined)`
   font-size: 30px;
+  color: white;
 `;
 
 export const InfoContainer = styled.div`
