@@ -80,7 +80,16 @@ function DetailsPage() {
         <InfoSider>
           <Image src={image} alt={`Imagem do jogo ${title}`} />
           <Title margin="10px 0">{title}</Title>
-          <Info>{category}</Info>
+          <HorizontalContainer>
+            <Info width="20%">{category}</Info>
+            <Button
+              background="#0099ff"
+              border="none"
+              color="white"
+            >
+              Atualizar jogo
+            </Button>
+          </HorizontalContainer>
           <HorizontalDivider />
           <HorizontalContainer>
             <Info>{`Desenvolvido por ${developer}`}</Info>
