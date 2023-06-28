@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Popconfirm } from 'antd';
 import dayjs from 'dayjs';
 
 import {
@@ -26,12 +27,14 @@ import Button from '../../components/Button';
 import getEmbededUrl from '../../helpers/getEmbededUrl';
 import Loading from '../../components/Loading';
 import GameFormModal from '../../components/GameFormModal';
+import { gamesContext } from '../../context/gamesContext';
 
 const gamesAPI = new GamesAPI();
 
 function DetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { getAllGames } = useContext(gamesContext);
   const [game, setGame] = useState({});
   const [updateModal, setUpdateModal] = useState({ open: false });
 
@@ -137,6 +140,18 @@ function DetailsPage() {
     return info;
   };
 
+  const onDeleteGameclicked = async () => {
+    const result = await gamesAPI.deleteGameById(id);
+
+    if (result instanceof ErrorCreator) {
+      sendNotification('Não foi possível deletar esse jogo, por favor, tente mais tarde', 'error');
+    } else {
+      sendNotification('Jogo deletado com sucesso!', 'success');
+      getAllGames();
+      navigate('/');
+    }
+  };
+
   return (
     <DetailsContainer image={backdrop}>
       <BackButtonContainer>
@@ -163,13 +178,20 @@ function DetailsPage() {
             >
               Atualizar jogo
             </Button>
-            <Button
-              background="#ff5400"
-              border="none"
-              color="white"
+            <Popconfirm
+              title="Tem certeza que deseja deletar esse jogo?"
+              okText="Sim"
+              cancelText="Não"
+              onConfirm={onDeleteGameclicked}
             >
-              Deletar jogo
-            </Button>
+              <Button
+                background="#ff5400"
+                border="none"
+                color="white"
+              >
+                Deletar jogo
+              </Button>
+            </Popconfirm>
           </HorizontalContainer>
           <HorizontalDivider />
           <HorizontalContainer>
