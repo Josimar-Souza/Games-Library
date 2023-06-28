@@ -66,7 +66,7 @@ TextArea.defaultProps = {
   maxLength: 100,
   placeHolder: '',
   resize: 'both',
-  height: '120px',
+  height: 'fit-content',
   labelFontSize: '16px',
   autoSize: false,
   helper: '',

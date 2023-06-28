@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
+
 import {
   DetailsContainer,
   BackButtonContainer,
@@ -23,6 +25,7 @@ import sendNotification from '../../helpers/senNotification';
 import Button from '../../components/Button';
 import getEmbededUrl from '../../helpers/getEmbededUrl';
 import Loading from '../../components/Loading';
+import GameFormModal from '../../components/GameFormModal';
 
 const gamesAPI = new GamesAPI();
 
@@ -30,6 +33,7 @@ function DetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [game, setGame] = useState({});
+  const [updateModal, setUpdateModal] = useState({ open: false });
 
   useEffect(() => {
     const getGame = async () => {
@@ -98,6 +102,48 @@ function DetailsPage() {
     return bad;
   };
 
+  const setUpdateModalState = (value) => {
+    setUpdateModal({ ...updateModal, open: value });
+  };
+
+  const formatDate = (date) => {
+    const dateSplitted = date.split('/');
+
+    return `${dateSplitted[2]}-${dateSplitted[1]}-${dateSplitted[0]}`;
+  };
+
+  const getFormattedPlatforms = (platformstoFormat) => {
+    const formattedPlatforms = [];
+
+    platformstoFormat.forEach((platform) => {
+      formattedPlatforms.push({
+        platform,
+      });
+    });
+
+    return formattedPlatforms;
+  };
+
+  const getModalInfo = () => {
+    const {
+      releaseYear,
+      platforms: infoPlatforms,
+      metacritic: infoMetacritic,
+      ...rest
+    } = game;
+
+    const info = { ...rest };
+
+    const date = new Date(formatDate(releaseYear)).toJSON();
+
+    info.releaseDate = dayjs(date);
+    info.metascore = infoMetacritic.metascore;
+    info.userscore = infoMetacritic.userscore;
+    info.platforms = getFormattedPlatforms(infoPlatforms);
+
+    return info;
+  };
+
   return (
     <DetailsContainer image={backdrop}>
       <BackButtonContainer>
@@ -120,6 +166,7 @@ function DetailsPage() {
               background="#0099ff"
               border="none"
               color="white"
+              onClick={() => setUpdateModalState(true)}
             >
               Atualizar jogo
             </Button>
@@ -162,6 +209,12 @@ function DetailsPage() {
           </PlatformsContainer>
         </ContentContainer>
       </InfoContainer>
+      <GameFormModal
+        open={updateModal.open}
+        title={`Atualize o jogo ${title}`}
+        cancelCallback={setUpdateModalState}
+        info={getModalInfo()}
+      />
     </DetailsContainer>
   );
 }

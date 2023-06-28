@@ -26,7 +26,7 @@ const gamesAPI = new GamesAPI();
 
 function GameFormModal({
   open,
-  onAddCloseGameClicked,
+  cancelCallback,
   title,
   info,
 }) {
@@ -92,12 +92,11 @@ function GameFormModal({
       sendNotification(result.customMessage, 'error');
     } else {
       sendNotification('Jogo adicionado com sucesso!', 'success');
-      onAddCloseGameClicked(false);
+      cancelCallback(false);
     }
   };
 
   const onCategoryInputChange = ({ target: { value } }) => {
-    console.log(value);
     setCategoryToAdd(value);
   };
 
@@ -121,7 +120,7 @@ function GameFormModal({
 
   const onCancel = () => {
     form.resetFields();
-    onAddCloseGameClicked(false);
+    cancelCallback(false);
   };
 
   return (
@@ -351,7 +350,7 @@ GameFormModal.defaultProps = {
 
 GameFormModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  onAddCloseGameClicked: PropTypes.func.isRequired,
+  cancelCallback: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   info: PropTypes.shape({}),
 };
