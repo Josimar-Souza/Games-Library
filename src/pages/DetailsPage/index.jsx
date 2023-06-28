@@ -68,7 +68,7 @@ function DetailsPage() {
     category,
     platforms,
     trailerURL,
-    releaseYear,
+    releaseDate,
   } = game;
 
   const onBackClick = () => {
@@ -107,12 +107,6 @@ function DetailsPage() {
     setUpdateModal({ ...updateModal, open: value });
   };
 
-  const formatDate = (date) => {
-    const dateSplitted = date.split('/');
-
-    return `${dateSplitted[2]}-${dateSplitted[1]}-${dateSplitted[0]}`;
-  };
-
   const getFormattedPlatforms = (platformstoFormat) => {
     const formattedPlatforms = [];
 
@@ -127,7 +121,7 @@ function DetailsPage() {
 
   const getModalInfo = () => {
     const {
-      releaseYear: infoReleaseYear,
+      releaseDate: infoReleaseDate,
       platforms: infoPlatforms,
       metacritic: infoMetacritic,
       ...rest
@@ -135,9 +129,7 @@ function DetailsPage() {
 
     const info = { ...rest };
 
-    const date = new Date(formatDate(infoReleaseYear)).toJSON();
-
-    info.releaseDate = dayjs(date);
+    info.releaseDate = dayjs(infoReleaseDate);
     info.metascore = infoMetacritic.metascore;
     info.userscore = infoMetacritic.userscore;
     info.platforms = getFormattedPlatforms(infoPlatforms);
@@ -182,7 +174,7 @@ function DetailsPage() {
           <HorizontalDivider />
           <HorizontalContainer>
             <Info>{category}</Info>
-            <Info>{releaseYear}</Info>
+            <Info>{dayjs(releaseDate).format('DD/MM/YYYY')}</Info>
           </HorizontalContainer>
           <HorizontalDivider />
           <HorizontalContainer>

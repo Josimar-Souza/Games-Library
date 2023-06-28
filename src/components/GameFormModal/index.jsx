@@ -17,7 +17,6 @@ import DatePicker from '../DatePicker';
 import Select from '../Select';
 import Button from '../Button';
 import { gamesContext } from '../../context/gamesContext';
-import dateFormatter from '../../helpers/dateFormatter';
 import GamesAPI from '../../domain/gamesAPI';
 import ErrorCreator from '../../helpers/ErrorCreator';
 import sendNotification from '../../helpers/senNotification';
@@ -72,9 +71,8 @@ function GameFormModal({
     } = values;
 
     const newGame = { ...rest };
-    const formattedDate = dateFormatter(values.releaseDate);
 
-    newGame.releaseYear = formattedDate;
+    newGame.releaseDate = new Date(values.releaseDate).toJSON();
     newGame.metacritic = {
       userscore: +userscore,
       metascore: +metascore,
