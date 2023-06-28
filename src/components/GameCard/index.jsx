@@ -18,7 +18,7 @@ function GameCard({ game, _id }) {
     image,
     title,
     developer,
-    publisher,
+    releaseYear,
   } = game;
 
   const onSeeDetailsClick = () => {
@@ -33,7 +33,7 @@ function GameCard({ game, _id }) {
       <Title>{title}</Title>
       <InfoContainer>
         <CardInfo>{developer}</CardInfo>
-        <CardInfo>{publisher}</CardInfo>
+        <CardInfo>{releaseYear}</CardInfo>
       </InfoContainer>
       <Button
         fontSize="14px"
@@ -53,7 +53,7 @@ GameCard.propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     developer: PropTypes.string.isRequired,
-    publisher: PropTypes.string.isRequired,
+    releaseYear: PropTypes.string.isRequired,
   }).isRequired,
   _id: PropTypes.string.isRequired,
 };
