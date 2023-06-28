@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { LeftCircleOutlined } from '@ant-design/icons';
 
+const getInfoWidth = ({ width }) => {
+  if (width) return width;
+
+  return '85%';
+};
+
 export const DetailsContainer = styled.main`
   align-items: center;
   background-image: url(${({ image }) => image});
@@ -38,7 +44,6 @@ export const InfoContainer = styled.div`
 
 export const InfoSider = styled.div`
   align-items: center;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -57,7 +62,6 @@ export const Title = styled.h1`
 
 export const ContentContainer = styled.div`
   align-items: center;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -67,7 +71,7 @@ export const Info = styled.p`
   color: white;
   line-height: 22px;
   text-align: center;
-  width: 85%;
+  width: ${getInfoWidth};
 `;
 
 export const HorizontalContainer = styled.div`
@@ -81,4 +85,19 @@ export const HorizontalDivider = styled.div`
   height: 1px;
   margin: 20px 0;
   width: 85%;
+`;
+
+export const PlatformsContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 180px;
+  width: 100%;
+`;
+
+export const VerticalDivider = styled.div`
+  align-self: stretch;
+  background: rgba(255, 255, 255, 0.3);
+  width: 1px;
 `;

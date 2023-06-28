@@ -12,6 +12,8 @@ import {
   Info,
   HorizontalContainer,
   HorizontalDivider,
+  PlatformsContainer,
+  VerticalDivider,
 } from './detailsPageStyles';
 import GamesAPI from '../../domain/gamesAPI';
 import ErrorCreator from '../../helpers/ErrorCreator';
@@ -52,6 +54,7 @@ function DetailsPage() {
     publisher,
     metacritic,
     category,
+    platforms,
   } = game;
   console.log(game);
   const onBackClick = () => {
@@ -89,9 +92,16 @@ function DetailsPage() {
           <HorizontalDivider />
           <Title margin="10px 0">Trailer</Title>
         </InfoSider>
+        <VerticalDivider />
         <ContentContainer>
           <Title margin="20px 0">Sinopse</Title>
           <Info>{sinopse}</Info>
+          <Title margin="20px 0">Plataformas</Title>
+          <PlatformsContainer>
+            {platforms.map((platform) => (
+              <Info width="30%">{platform}</Info>
+            ))}
+          </PlatformsContainer>
         </ContentContainer>
       </InfoContainer>
     </DetailsContainer>
