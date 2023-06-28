@@ -219,6 +219,7 @@ function DetailsPage() {
         title={`Atualize o jogo ${title}`}
         cancelCallback={setUpdateModalState}
         info={getModalInfo()}
+        type="update"
       />
     </DetailsContainer>
   );

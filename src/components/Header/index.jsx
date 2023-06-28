@@ -30,6 +30,7 @@ function Header({ title }) {
         open={addGameModal.open}
         cancelCallback={onAddCloseGameClicked}
         title="Adicione um jogo"
+        type="add"
       />
     </HeaderContainer>
   );

@@ -28,6 +28,7 @@ function GameFormModal({
   cancelCallback,
   title,
   info,
+  type,
 }) {
   const { categories, getAllCategories } = useContext(gamesContext);
   const [categoryToAdd, setCategoryToAdd] = useState('');
@@ -70,26 +71,39 @@ function GameFormModal({
       ...rest
     } = values;
 
-    const newGame = { ...rest };
+    const gameValues = { ...rest };
 
-    newGame.releaseDate = new Date(values.releaseDate).toJSON();
-    newGame.metacritic = {
+    gameValues.releaseDate = new Date(values.releaseDate).toJSON();
+    gameValues.metacritic = {
       userscore: +userscore,
       metascore: +metascore,
     };
-    newGame.platforms = getPlatforms(platforms);
+    gameValues.platforms = getPlatforms(platforms);
 
-    if (newGame.platforms.length === 0) {
+    if (gameValues.platforms.length === 0) {
       sendNotification('Por favor, adicione ao menos uma plataforma', 'error');
       return;
     }
 
-    const result = await gamesAPI.addNewGame(newGame);
+    let result;
+    let message;
+
+    if (type === 'add') {
+      result = await gamesAPI.addNewGame(gameValues);
+
+      message = 'Jogo adicionado com sucesso!';
+    } else if (type === 'update') {
+      const { _id } = info;
+
+      result = await gamesAPI.updateGame(gameValues, _id);
+
+      message = 'Jogo atualizado com sucesso!';
+    }
 
     if (result instanceof ErrorCreator) {
       sendNotification(result.customMessage, 'error');
     } else {
-      sendNotification('Jogo adicionado com sucesso!', 'success');
+      sendNotification(message, 'success');
       cancelCallback(false);
     }
   };
@@ -350,7 +364,10 @@ GameFormModal.propTypes = {
   open: PropTypes.bool.isRequired,
   cancelCallback: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  info: PropTypes.shape({}),
+  info: PropTypes.shape({
+    _id: PropTypes.string,
+  }),
+  type: PropTypes.string.isRequired,
 };
 
 export default GameFormModal;
