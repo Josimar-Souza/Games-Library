@@ -148,6 +148,7 @@ function DetailsPage() {
         <ContentContainer>
           <Title margin="20px 0">Sinopse</Title>
           <Info>{sinopse}</Info>
+          <HorizontalDivider />
           <Title margin="20px 0">Plataformas</Title>
           <PlatformsContainer>
             {platforms.map((platform) => (
