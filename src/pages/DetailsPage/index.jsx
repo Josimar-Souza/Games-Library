@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import DetailsContainer from './detailsPageStyles';
+import { useParams, useNavigate } from 'react-router-dom';
+import { DetailsContainer, BackButtonContainer, CustomBackIcon } from './detailsPageStyles';
 import GamesAPI from '../../domain/gamesAPI';
 import ErrorCreator from '../../helpers/ErrorCreator';
 import sendNotification from '../../helpers/senNotification';
+import Button from '../../components/Button';
 
 const gamesAPI = new GamesAPI();
 
 function DetailsPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [game, setGame] = useState({});
 
   useEffect(() => {
@@ -31,9 +33,22 @@ function DetailsPage() {
 
   const { backdrop } = game;
 
+  const onBackClick = () => {
+    navigate('/');
+  };
+
   return (
     <DetailsContainer image={backdrop}>
-      <h1>Details Page</h1>
+      <BackButtonContainer>
+        <Button
+          background="none"
+          border="none"
+          boxShadow="none"
+          onClick={onBackClick}
+        >
+          <CustomBackIcon />
+        </Button>
+      </BackButtonContainer>
     </DetailsContainer>
   );
 }
