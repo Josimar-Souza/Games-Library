@@ -68,6 +68,7 @@ function DetailsPage() {
     category,
     platforms,
     trailerURL,
+    releaseYear,
   } = game;
 
   const onBackClick = () => {
@@ -126,7 +127,7 @@ function DetailsPage() {
 
   const getModalInfo = () => {
     const {
-      releaseYear,
+      releaseYear: infoReleaseYear,
       platforms: infoPlatforms,
       metacritic: infoMetacritic,
       ...rest
@@ -134,7 +135,7 @@ function DetailsPage() {
 
     const info = { ...rest };
 
-    const date = new Date(formatDate(releaseYear)).toJSON();
+    const date = new Date(formatDate(infoReleaseYear)).toJSON();
 
     info.releaseDate = dayjs(date);
     info.metascore = infoMetacritic.metascore;
@@ -160,8 +161,8 @@ function DetailsPage() {
         <InfoSider>
           <Image src={image} alt={`Imagem do jogo ${title}`} />
           <Title margin="10px 0">{title}</Title>
+          <HorizontalDivider />
           <HorizontalContainer>
-            <Info width="20%">{category}</Info>
             <Button
               background="#0099ff"
               border="none"
@@ -170,6 +171,18 @@ function DetailsPage() {
             >
               Atualizar jogo
             </Button>
+            <Button
+              background="#ff5400"
+              border="none"
+              color="white"
+            >
+              Deletar jogo
+            </Button>
+          </HorizontalContainer>
+          <HorizontalDivider />
+          <HorizontalContainer>
+            <Info>{category}</Info>
+            <Info>{releaseYear}</Info>
           </HorizontalContainer>
           <HorizontalDivider />
           <HorizontalContainer>
