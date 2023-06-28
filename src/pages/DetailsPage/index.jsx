@@ -22,6 +22,7 @@ import ErrorCreator from '../../helpers/ErrorCreator';
 import sendNotification from '../../helpers/senNotification';
 import Button from '../../components/Button';
 import getEmbededUrl from '../../helpers/getEmbededUrl';
+import Loading from '../../components/Loading';
 
 const gamesAPI = new GamesAPI();
 
@@ -45,7 +46,11 @@ function DetailsPage() {
   }, []);
 
   if (Object.entries(game).length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <DetailsContainer>
+        <Loading tip="Carregando..." size="large" />
+      </DetailsContainer>
+    );
   }
 
   const {
