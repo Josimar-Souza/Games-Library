@@ -14,11 +14,13 @@ import {
   HorizontalDivider,
   PlatformsContainer,
   VerticalDivider,
+  TrailerView,
 } from './detailsPageStyles';
 import GamesAPI from '../../domain/gamesAPI';
 import ErrorCreator from '../../helpers/ErrorCreator';
 import sendNotification from '../../helpers/senNotification';
 import Button from '../../components/Button';
+import getEmbededUrl from '../../helpers/getEmbededUrl';
 
 const gamesAPI = new GamesAPI();
 
@@ -55,8 +57,9 @@ function DetailsPage() {
     metacritic,
     category,
     platforms,
+    trailerURL,
   } = game;
-  console.log(game);
+
   const onBackClick = () => {
     navigate('/');
   };
@@ -91,6 +94,7 @@ function DetailsPage() {
           </HorizontalContainer>
           <HorizontalDivider />
           <Title margin="10px 0">Trailer</Title>
+          <TrailerView src={getEmbededUrl(trailerURL)} allowFullScreen />
         </InfoSider>
         <VerticalDivider />
         <ContentContainer>

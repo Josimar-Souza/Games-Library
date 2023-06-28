@@ -12,10 +12,11 @@ export const DetailsContainer = styled.main`
   background-image: url(${({ image }) => image});
   background-size: cover;
   display: flex;
-  height: 88vh;
+  min-height: 88vh;
   justify-content: center;
+  padding: 20px;
   position: relative;
-  width: 100%;
+  width: 80%;
 `;
 
 export const BackButtonContainer = styled.div`
@@ -100,4 +101,9 @@ export const VerticalDivider = styled.div`
   align-self: stretch;
   background: rgba(255, 255, 255, 0.3);
   width: 1px;
+`;
+
+export const TrailerView = styled.iframe`
+  min-height: 200px;
+  width: 80%;
 `;
