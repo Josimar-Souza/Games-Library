@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, Divider } from 'antd';
 import PropTypes from 'prop-types';
 import {
@@ -17,7 +18,6 @@ import DatePicker from '../DatePicker';
 import Select from '../Select';
 import Button from '../Button';
 import { gamesContext } from '../../context/gamesContext';
-import dateFormatter from '../../helpers/dateFormatter';
 import GamesAPI from '../../domain/gamesAPI';
 import ErrorCreator from '../../helpers/ErrorCreator';
 import sendNotification from '../../helpers/senNotification';
@@ -26,13 +26,15 @@ const gamesAPI = new GamesAPI();
 
 function GameFormModal({
   open,
-  onAddCloseGameClicked,
+  cancelCallback,
   title,
   info,
+  type,
 }) {
-  const { categories, getAllCategories } = useContext(gamesContext);
+  const { categories, getAllCategories, getAllGames } = useContext(gamesContext);
   const [categoryToAdd, setCategoryToAdd] = useState('');
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const getCategoriesOption = () => {
     const options = [];
@@ -71,33 +73,47 @@ function GameFormModal({
       ...rest
     } = values;
 
-    const newGame = { ...rest };
-    const formattedDate = dateFormatter(values.releaseDate);
+    const gameValues = { ...rest };
 
-    newGame.releaseYear = formattedDate;
-    newGame.metacritic = {
+    gameValues.releaseDate = new Date(values.releaseDate).toJSON();
+    gameValues.metacritic = {
       userscore: +userscore,
       metascore: +metascore,
     };
-    newGame.platforms = getPlatforms(platforms);
+    gameValues.platforms = getPlatforms(platforms);
 
-    if (newGame.platforms.length === 0) {
+    if (gameValues.platforms.length === 0) {
       sendNotification('Por favor, adicione ao menos uma plataforma', 'error');
       return;
     }
 
-    const result = await gamesAPI.addNewGame(newGame);
+    let result;
+    let message;
+
+    if (type === 'add') {
+      result = await gamesAPI.addNewGame(gameValues);
+
+      message = 'Jogo adicionado com sucesso!';
+    } else if (type === 'update') {
+      const { _id } = info;
+
+      result = await gamesAPI.updateGame(gameValues, _id);
+
+      message = 'Jogo atualizado com sucesso!';
+    }
 
     if (result instanceof ErrorCreator) {
       sendNotification(result.customMessage, 'error');
     } else {
-      sendNotification('Jogo adicionado com sucesso!', 'success');
-      onAddCloseGameClicked(false);
+      sendNotification(message, 'success');
+      cancelCallback(false);
+
+      getAllGames();
+      navigate('/');
     }
   };
 
   const onCategoryInputChange = ({ target: { value } }) => {
-    console.log(value);
     setCategoryToAdd(value);
   };
 
@@ -121,7 +137,7 @@ function GameFormModal({
 
   const onCancel = () => {
     form.resetFields();
-    onAddCloseGameClicked(false);
+    cancelCallback(false);
   };
 
   return (
@@ -351,9 +367,12 @@ GameFormModal.defaultProps = {
 
 GameFormModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  onAddCloseGameClicked: PropTypes.func.isRequired,
+  cancelCallback: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  info: PropTypes.shape({}),
+  info: PropTypes.shape({
+    _id: PropTypes.string,
+  }),
+  type: PropTypes.string.isRequired,
 };
 
 export default GameFormModal;

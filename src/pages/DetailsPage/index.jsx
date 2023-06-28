@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
+
 import {
   DetailsContainer,
   BackButtonContainer,
@@ -23,6 +25,7 @@ import sendNotification from '../../helpers/senNotification';
 import Button from '../../components/Button';
 import getEmbededUrl from '../../helpers/getEmbededUrl';
 import Loading from '../../components/Loading';
+import GameFormModal from '../../components/GameFormModal';
 
 const gamesAPI = new GamesAPI();
 
@@ -30,6 +33,7 @@ function DetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [game, setGame] = useState({});
+  const [updateModal, setUpdateModal] = useState({ open: false });
 
   useEffect(() => {
     const getGame = async () => {
@@ -64,6 +68,7 @@ function DetailsPage() {
     category,
     platforms,
     trailerURL,
+    releaseDate,
   } = game;
 
   const onBackClick = () => {
@@ -98,6 +103,40 @@ function DetailsPage() {
     return bad;
   };
 
+  const setUpdateModalState = (value) => {
+    setUpdateModal({ ...updateModal, open: value });
+  };
+
+  const getFormattedPlatforms = (platformstoFormat) => {
+    const formattedPlatforms = [];
+
+    platformstoFormat.forEach((platform) => {
+      formattedPlatforms.push({
+        platform,
+      });
+    });
+
+    return formattedPlatforms;
+  };
+
+  const getModalInfo = () => {
+    const {
+      releaseDate: infoReleaseDate,
+      platforms: infoPlatforms,
+      metacritic: infoMetacritic,
+      ...rest
+    } = game;
+
+    const info = { ...rest };
+
+    info.releaseDate = dayjs(infoReleaseDate);
+    info.metascore = infoMetacritic.metascore;
+    info.userscore = infoMetacritic.userscore;
+    info.platforms = getFormattedPlatforms(infoPlatforms);
+
+    return info;
+  };
+
   return (
     <DetailsContainer image={backdrop}>
       <BackButtonContainer>
@@ -114,15 +153,28 @@ function DetailsPage() {
         <InfoSider>
           <Image src={image} alt={`Imagem do jogo ${title}`} />
           <Title margin="10px 0">{title}</Title>
+          <HorizontalDivider />
           <HorizontalContainer>
-            <Info width="20%">{category}</Info>
             <Button
               background="#0099ff"
               border="none"
               color="white"
+              onClick={() => setUpdateModalState(true)}
             >
               Atualizar jogo
             </Button>
+            <Button
+              background="#ff5400"
+              border="none"
+              color="white"
+            >
+              Deletar jogo
+            </Button>
+          </HorizontalContainer>
+          <HorizontalDivider />
+          <HorizontalContainer>
+            <Info>{category}</Info>
+            <Info>{dayjs(releaseDate).format('DD/MM/YYYY')}</Info>
           </HorizontalContainer>
           <HorizontalDivider />
           <HorizontalContainer>
@@ -162,6 +214,13 @@ function DetailsPage() {
           </PlatformsContainer>
         </ContentContainer>
       </InfoContainer>
+      <GameFormModal
+        open={updateModal.open}
+        title={`Atualize o jogo ${title}`}
+        cancelCallback={setUpdateModalState}
+        info={getModalInfo()}
+        type="update"
+      />
     </DetailsContainer>
   );
 }

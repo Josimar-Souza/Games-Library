@@ -28,8 +28,9 @@ function Header({ title }) {
       </Button>
       <GameFormModal
         open={addGameModal.open}
-        onAddCloseGameClicked={onAddCloseGameClicked}
+        cancelCallback={onAddCloseGameClicked}
         title="Adicione um jogo"
+        type="add"
       />
     </HeaderContainer>
   );

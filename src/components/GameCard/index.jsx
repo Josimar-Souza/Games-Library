@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 import {
   GameCardContainer,
   ImageContainer,
@@ -18,7 +19,7 @@ function GameCard({ game, _id }) {
     image,
     title,
     developer,
-    releaseYear,
+    releaseDate,
   } = game;
 
   const onSeeDetailsClick = () => {
@@ -33,7 +34,7 @@ function GameCard({ game, _id }) {
       <Title>{title}</Title>
       <InfoContainer>
         <CardInfo>{developer}</CardInfo>
-        <CardInfo>{releaseYear}</CardInfo>
+        <CardInfo>{dayjs(releaseDate).format('DD/MM/YYYY')}</CardInfo>
       </InfoContainer>
       <Button
         fontSize="14px"
@@ -53,7 +54,7 @@ GameCard.propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     developer: PropTypes.string.isRequired,
-    releaseYear: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired,
   }).isRequired,
   _id: PropTypes.string.isRequired,
 };
