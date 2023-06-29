@@ -4,7 +4,7 @@ import { gamesContext } from '../../context/gamesContext';
 import Button from '../Button';
 
 function Sider() {
-  const { categories, searchByCategory, resetSearchByCategory } = useContext(gamesContext);
+  const { categories, searchByCategory, resetGamesToShow } = useContext(gamesContext);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const onCategoryClick = (category) => {
@@ -14,7 +14,7 @@ function Sider() {
 
   const resetSearch = () => {
     setSelectedCategory('');
-    resetSearchByCategory();
+    resetGamesToShow();
   };
 
   return (

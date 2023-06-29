@@ -54,8 +54,16 @@ function GamesContext({ children }) {
     setGamesToShow(gamesSearched);
   };
 
-  const resetSearchByCategory = () => {
+  const resetGamesToShow = () => {
     setGamesToShow(games);
+  };
+
+  const searchGameByName = (name) => {
+    const gamesSearched = games.filter(
+      (game) => game.title.toLowerCase().includes(name.toLowerCase()),
+    );
+
+    setGamesToShow(gamesSearched);
   };
 
   useEffect(() => {
@@ -76,7 +84,8 @@ function GamesContext({ children }) {
     getAllGames,
     getAllCategories,
     searchByCategory,
-    resetSearchByCategory,
+    resetGamesToShow,
+    searchGameByName,
     isLoading,
   }), [games, categories, gamesToShow]);
 
