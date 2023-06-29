@@ -33,6 +33,8 @@ function GameFormModal({
 }) {
   const { categories, getAllCategories, getAllGames } = useContext(gamesContext);
   const [categoryToAdd, setCategoryToAdd] = useState('');
+  const [isLoadingGame, setIsLoadingGame] = useState(false);
+  const [isLoadingCategory, setIsLoadingCategory] = useState(false);
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
@@ -90,6 +92,8 @@ function GameFormModal({
     let result;
     let message;
 
+    setIsLoadingGame(true);
+
     if (type === 'add') {
       result = await gamesAPI.addNewGame(gameValues);
 
@@ -101,6 +105,8 @@ function GameFormModal({
 
       message = 'Jogo atualizado com sucesso!';
     }
+
+    setIsLoadingGame(false);
 
     if (result instanceof ErrorCreator) {
       sendNotification(result.customMessage, 'error');
@@ -123,7 +129,11 @@ function GameFormModal({
       return;
     }
 
+    setIsLoadingCategory(true);
+
     const result = await gamesAPI.addNewCategory({ category: categoryToAdd });
+
+    setIsLoadingCategory(false);
 
     if (result instanceof ErrorCreator) {
       sendNotification(result.customMessage, 'error');
@@ -330,6 +340,7 @@ function GameFormModal({
             background="#00e012"
             color="white"
             htmlType="submit"
+            isLoading={isLoadingGame}
           >
             Salvar
           </Button>
@@ -352,6 +363,7 @@ function GameFormModal({
             background="#5be6ff"
             color="#494949"
             onClick={onAddCategoryClick}
+            isLoading={isLoadingCategory}
           >
             Adicionar categoria
           </Button>

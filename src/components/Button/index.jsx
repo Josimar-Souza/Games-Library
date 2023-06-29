@@ -15,6 +15,7 @@ function Button({
   margin,
   display,
   boxShadow,
+  isLoading,
 }) {
   return (
     <CustomButton
@@ -29,6 +30,7 @@ function Button({
       display={display}
       borderradius={borderRadius}
       boxshadow={boxShadow}
+      loading={isLoading}
     >
       {children}
     </CustomButton>
@@ -46,6 +48,7 @@ Button.defaultProps = {
   display: 'inline',
   borderRadius: '5px',
   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+  isLoading: false,
 };
 
 Button.propTypes = {
@@ -61,6 +64,7 @@ Button.propTypes = {
   display: PropTypes.string,
   borderRadius: PropTypes.string,
   boxShadow: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 export default Button;
