@@ -8,7 +8,7 @@ import Input from '../Input';
 import { gamesContext } from '../../context/gamesContext';
 
 function Search() {
-  const { searchGameByName } = useContext(gamesContext);
+  const { searchGameByName, setHasSearched } = useContext(gamesContext);
   const [name, setName] = useState('');
 
   const onInputChange = ({ target: { value } }) => {
@@ -17,6 +17,7 @@ function Search() {
 
   const onSearchClicked = () => {
     searchGameByName(name);
+    setHasSearched(true);
   };
 
   return (

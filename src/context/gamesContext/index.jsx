@@ -18,6 +18,7 @@ function GamesContext({ children }) {
   const [gamesToShow, setGamesToShow] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const getAllGames = async () => {
     setIsLoading(true);
@@ -86,6 +87,8 @@ function GamesContext({ children }) {
     searchByCategory,
     resetGamesToShow,
     searchGameByName,
+    setHasSearched,
+    hasSearched,
     isLoading,
   }), [games, categories, gamesToShow]);
 
