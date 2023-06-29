@@ -45,6 +45,10 @@ function GamesContext({ children }) {
     setGamesToShow(gamesSearched);
   };
 
+  const resetSearchByCategory = () => {
+    setGamesToShow(games);
+  };
+
   useEffect(() => {
     sendNotification(
       'Esse projeto utiliza uma api própria que foi publicada no Render gratuitamente e pode estar hibernando, então se não carregar, por favor recarrege a página até aparecer',
@@ -63,6 +67,7 @@ function GamesContext({ children }) {
     getAllGames,
     getAllCategories,
     searchByCategory,
+    resetSearchByCategory,
   }), [games, categories, gamesToShow]);
 
   return (
