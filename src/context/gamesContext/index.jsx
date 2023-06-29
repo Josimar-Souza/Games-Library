@@ -17,9 +17,14 @@ function GamesContext({ children }) {
   const [games, setGames] = useState([]);
   const [gamesToShow, setGamesToShow] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getAllGames = async () => {
+    setIsLoading(true);
+
     const gamesFounded = await gamesAPI.getAllGames();
+
+    setIsLoading(false);
 
     if (gamesFounded instanceof ErrorCreator) {
       sendNotification(gamesFounded.customMessage, 'error');
@@ -30,7 +35,11 @@ function GamesContext({ children }) {
   };
 
   const getAllCategories = async () => {
+    setIsLoading(true);
+
     const categoriesFounded = await gamesAPI.getAllCategories();
+
+    setIsLoading(false);
 
     if (categoriesFounded instanceof ErrorCreator) {
       sendNotification(categoriesFounded.customMessage, 'error');
@@ -68,6 +77,7 @@ function GamesContext({ children }) {
     getAllCategories,
     searchByCategory,
     resetSearchByCategory,
+    isLoading,
   }), [games, categories, gamesToShow]);
 
   return (
