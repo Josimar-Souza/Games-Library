@@ -4,7 +4,7 @@ import { gamesContext } from '../../context/gamesContext';
 import Button from '../Button';
 
 function Sider() {
-  const { categories, searchByCategory } = useContext(gamesContext);
+  const { categories, searchByCategory, resetSearchByCategory } = useContext(gamesContext);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const onCategoryClick = (category) => {
@@ -12,8 +12,25 @@ function Sider() {
     searchByCategory(category);
   };
 
+  const resetSearch = () => {
+    setSelectedCategory('');
+    resetSearchByCategory();
+  };
+
   return (
     <SiderContainer>
+      {selectedCategory !== ''
+        ? (
+          <Button
+            margin="10px 0"
+            background="red"
+            color="white"
+            onClick={resetSearch}
+            border="none"
+          >
+            Limpar busca por categoria
+          </Button>
+        ) : null}
       {categories.map(({ category, _id }) => (
         <Button
           key={_id}
