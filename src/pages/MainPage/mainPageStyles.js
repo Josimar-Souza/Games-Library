@@ -8,7 +8,7 @@ export const MainContainer = styled.main`
 
 export const MainContent = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   min-height: 80vh;
   width: 100%;
 `;
@@ -19,6 +19,7 @@ export const GamesCardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
+  margin-top: 100px;
   width: 80%;
 `;
 
