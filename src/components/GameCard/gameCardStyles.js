@@ -7,8 +7,10 @@ export const GameCardContainer = styled.div`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  min-height: 280px;
+  justify-content: space-between;
+  height: 430px;
   padding: 10px;
+  margin: 10px 0;
   width: 15%;
 `;
 
