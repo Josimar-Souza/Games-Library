@@ -6,7 +6,9 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   height: 100px;
+  position: fixed;
   width: 100%;
+  z-index: 1;
 `;
 
 export const HeaderTitle = styled.h1`

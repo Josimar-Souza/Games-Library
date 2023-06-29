@@ -5,8 +5,10 @@ const SiderContainer = styled.div`
   border-right: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
+  left: 0;
+  margin-top: 120px;
   min-height: 85vh;
+  position: fixed;
   width: 20%;
 `;
 

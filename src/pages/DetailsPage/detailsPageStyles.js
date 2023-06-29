@@ -12,6 +12,7 @@ export const DetailsContainer = styled.main`
   background-image: url(${({ image }) => image});
   background-size: cover;
   display: flex;
+  margin-top: 100px;
   min-height: 88vh;
   justify-content: center;
   padding: 20px;
