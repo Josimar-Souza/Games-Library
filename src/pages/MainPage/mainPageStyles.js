@@ -19,3 +19,7 @@ export const GamesCardContainer = styled.div`
   padding: 10px;
   width: 80%;
 `;
+
+export const FeedbackMessage = styled.h1`
+  
+`;
