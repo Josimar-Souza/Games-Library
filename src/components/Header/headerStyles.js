@@ -13,6 +13,10 @@ export const HeaderTitle = styled.h1`
   font-weight: 500;
   font-size: 36px;
   font-family: 'Kablammo', cursive;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const VerticalDivider = styled.div`
