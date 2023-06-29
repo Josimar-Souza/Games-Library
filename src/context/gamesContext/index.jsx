@@ -18,6 +18,7 @@ function GamesContext({ children }) {
   const [gamesToShow, setGamesToShow] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const getAllGames = async () => {
     setIsLoading(true);
@@ -54,8 +55,16 @@ function GamesContext({ children }) {
     setGamesToShow(gamesSearched);
   };
 
-  const resetSearchByCategory = () => {
+  const resetGamesToShow = () => {
     setGamesToShow(games);
+  };
+
+  const searchGameByName = (name) => {
+    const gamesSearched = games.filter(
+      (game) => game.title.toLowerCase().includes(name.toLowerCase()),
+    );
+
+    setGamesToShow(gamesSearched);
   };
 
   useEffect(() => {
@@ -76,7 +85,10 @@ function GamesContext({ children }) {
     getAllGames,
     getAllCategories,
     searchByCategory,
-    resetSearchByCategory,
+    resetGamesToShow,
+    searchGameByName,
+    setHasSearched,
+    hasSearched,
     isLoading,
   }), [games, categories, gamesToShow]);
 
