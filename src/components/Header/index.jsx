@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { HeaderContainer, HeaderTitle, VerticalDivider } from './headerStyles';
 import Button from '../Button';
@@ -7,14 +8,19 @@ import GameFormModal from '../GameFormModal';
 
 function Header({ title }) {
   const [addGameModal, setAddGameModal] = useState({ open: false, info: {} });
+  const navigate = useNavigate();
 
   const onAddCloseGameClicked = (value) => {
     setAddGameModal({ ...addGameModal, open: value });
   };
 
+  const onTitleClicked = () => {
+    navigate('/');
+  };
+
   return (
     <HeaderContainer>
-      <HeaderTitle>{title}</HeaderTitle>
+      <HeaderTitle onClick={onTitleClicked}>{title}</HeaderTitle>
       <VerticalDivider />
       <Search />
       <VerticalDivider />
