@@ -4,7 +4,7 @@ import ErrorCreator from '../../helpers/ErrorCreator';
 const baseURL = import.meta.env.VITE_GAMES_API_URL;
 
 class GamesAPI {
-  constructor(timeout = 15000) {
+  constructor(timeout = 20000) {
     this.api = axios.create({
       timeout,
     });
@@ -16,9 +16,13 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, `Não foi possível adicionar a categoria ${category.category}`);
     }
   }
 
@@ -28,9 +32,13 @@ class GamesAPI {
 
       return data.categories;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, 'Não foi possível listar todas as categorias, por favor, recarrega a página e tente novamente');
     }
   }
 
@@ -40,9 +48,13 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, 'Não foi possível deletar a categoria');
     }
   }
 
@@ -52,9 +64,13 @@ class GamesAPI {
 
       return data.games;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, 'Não foi possível listar todos os games');
     }
   }
 
@@ -64,9 +80,13 @@ class GamesAPI {
 
       return data.game;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, 'Não foi possível listar esse jogo');
     }
   }
 
@@ -76,9 +96,13 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, 'Não foi possível adicionar o jogo');
     }
   }
 
@@ -88,9 +112,13 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, 'Não foi possível atualizar esse jogo');
     }
   }
 
@@ -100,9 +128,13 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, 'Não foi possível deletar esse jogo');
     }
   }
 
@@ -112,9 +144,13 @@ class GamesAPI {
 
       return data;
     } catch (e) {
-      const { response: { data: { message } } } = e;
+      if (e.response) {
+        const { response: { data: { message } } } = e;
 
-      return new ErrorCreator(e, message);
+        return new ErrorCreator(e, message);
+      }
+
+      return new ErrorCreator(null, `Não foi possível listar jogos com a categoria ${category}`);
     }
   }
 }
