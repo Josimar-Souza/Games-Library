@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   SearchContainer,
   SearchIcon,
@@ -10,6 +10,10 @@ import { gamesContext } from '../../context/gamesContext';
 function Search() {
   const { searchGameByName, setHasSearched } = useContext(gamesContext);
   const [name, setName] = useState('');
+
+  useEffect(() => {
+    searchGameByName(name);
+  }, [name]);
 
   const onInputChange = ({ target: { value } }) => {
     setName(value);
