@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { SiderContainer, SiderMobileButton } from './siderStyles';
+import { SiderContainer, SiderMobileButton, Title } from './siderStyles';
 import { gamesContext } from '../../context/gamesContext';
 import Button from '../Button';
 
@@ -50,10 +50,12 @@ function Sider() {
               : <MenuFoldOutlined />}
           </SiderMobileButton>
         ) : null}
+      <Title>Categorias</Title>
       {hasSearched
         ? (
           <Button
             margin="10px 0"
+            mobileMargin="10px 0"
             background="red"
             color="white"
             onClick={resetSearch}

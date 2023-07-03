@@ -58,3 +58,8 @@ export const SiderMobileButton = styled.div`
   top: 0;
   width: 50px;
 `;
+
+export const Title = styled.h1`
+  font-size: 24px;
+  margin-bottom: 10px;
+`;
