@@ -25,7 +25,7 @@ export const GamesCardContainer = styled.div`
   @media only screen and (max-width: 512px) {
     align-items: center;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top: 120px;
     width: 100%;
   }
 `;

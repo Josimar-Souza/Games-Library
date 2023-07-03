@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { isMobile } from 'react-device-detect';
-import { MenuFoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { SiderContainer, SiderMobileButton } from './siderStyles';
 import { gamesContext } from '../../context/gamesContext';
 import Button from '../Button';
@@ -45,7 +45,9 @@ function Sider() {
       {isMobile
         ? (
           <SiderMobileButton>
-            <MenuFoldOutlined />
+            { siderAnimation.animationDirection === 'normal'
+              ? <MenuUnfoldOutlined />
+              : <MenuFoldOutlined />}
           </SiderMobileButton>
         ) : null}
       {hasSearched
