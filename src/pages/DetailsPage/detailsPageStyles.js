@@ -18,6 +18,12 @@ export const DetailsContainer = styled.main`
   padding: 20px;
   position: relative;
   width: 80%;
+
+  @media only screen and (max-width: 512px) {
+    margin-top: 120px;
+    padding: 10px;
+    width: 100%;
+  }
 `;
 
 export const BackButtonContainer = styled.div`
@@ -43,6 +49,11 @@ export const InfoContainer = styled.div`
   min-height: 250px;
   padding: 10px;
   width: 90%;
+
+  @media only screen and (max-width: 512px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const InfoSider = styled.div`
@@ -50,6 +61,10 @@ export const InfoSider = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
+
+  @media only screen and (max-width: 512px) {
+    width: 100%;
+  }
 `;
 
 export const Image = styled.img`
@@ -68,6 +83,10 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
+
+  @media only screen and (max-width: 512px) {
+    width: 100%;
+  }
 `;
 
 export const Info = styled.p`
@@ -106,8 +125,13 @@ export const VerticalDivider = styled.div`
 `;
 
 export const TrailerView = styled.iframe`
-  min-height: 200px;
+  min-height: 250px;
   width: 80%;
+
+  @media only screen and (max-width: 512px) {
+    min-height: 230px;
+    width: 95%;
+  }
 `;
 
 export const MetacriticScore = styled.p`

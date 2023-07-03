@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Popconfirm } from 'antd';
 import dayjs from 'dayjs';
@@ -220,8 +221,6 @@ function DetailsPage() {
             </Info>
           </HorizontalContainer>
           <HorizontalDivider />
-          <Title margin="10px 0">Trailer</Title>
-          <TrailerView src={getEmbededUrl(trailerURL)} allowFullScreen />
         </InfoSider>
         <VerticalDivider />
         <ContentContainer>
@@ -234,6 +233,8 @@ function DetailsPage() {
               <Info width="30%">{platform}</Info>
             ))}
           </PlatformsContainer>
+          <Title margin="10px 0">Trailer</Title>
+          <TrailerView src={getEmbededUrl(trailerURL)} allowFullScreen />
         </ContentContainer>
       </InfoContainer>
       <GameFormModal
