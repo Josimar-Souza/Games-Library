@@ -15,6 +15,11 @@ const CustomButton = styled(Button)`
   &:hover {
     color: ${({ color }) => color} !important;
   }
+
+  @media only screen and (max-width: 512px) {
+    margin: ${({ mobilemargin }) => mobilemargin};
+    width: ${({ mobilewidth }) => mobilewidth};
+  }
 `;
 
 export default CustomButton;

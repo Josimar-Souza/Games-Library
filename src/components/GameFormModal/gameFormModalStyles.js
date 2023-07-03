@@ -37,4 +37,8 @@ export const AddCategoryContainer = styled.div`
   margin-top: 10px;
   min-height: 50px;
   width: 100%;
+
+  @media only screen and (max-width: 512px) {
+    flex-direction: column;
+  }
 `;

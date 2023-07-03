@@ -9,6 +9,7 @@ function Input({
   border,
   borderWidth,
   margin,
+  mobileWidth,
   label,
   labelFontSize,
   colon,
@@ -34,6 +35,7 @@ function Input({
       name={name}
       colon={colon}
       width={width}
+      mobilewidth={mobileWidth}
       margin={margin}
       rules={[
         {
@@ -50,7 +52,7 @@ function Input({
         background={background}
         border={border}
         borderwidth={borderWidth}
-        borderRadius={borderRadius}
+        borderradius={borderRadius}
         onChange={onChange}
       />
     </CustomFormItem>
@@ -73,6 +75,7 @@ Input.defaultProps = {
   required: false,
   type: 'text',
   helper: '',
+  mobileWidth: '100%',
   onChange: () => {},
 };
 
@@ -93,6 +96,7 @@ Input.propTypes = {
   type: PropTypes.string,
   helper: PropTypes.string,
   onChange: PropTypes.string,
+  mobileWidth: PropTypes.string,
 };
 
 export default Input;

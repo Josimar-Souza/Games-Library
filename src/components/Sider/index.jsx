@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
-import SiderContainer from './siderStyles';
+import { isMobile } from 'react-device-detect';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { SiderContainer, SiderMobileButton, Title } from './siderStyles';
 import { gamesContext } from '../../context/gamesContext';
 import Button from '../Button';
 
@@ -12,6 +14,7 @@ function Sider() {
     setHasSearched,
   } = useContext(gamesContext);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [siderAnimation, setSiderAnimation] = useState({ animation: false, animationDirection: 'reverse' });
 
   const onCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -25,12 +28,34 @@ function Sider() {
     resetGamesToShow();
   };
 
+  const onSiderButtonClick = () => {
+    if (siderAnimation.animationDirection === 'reverse') {
+      setSiderAnimation({ animation: true, animationDirection: 'normal' });
+    } else {
+      setSiderAnimation({ animation: true, animationDirection: 'reverse' });
+    }
+  };
+
   return (
-    <SiderContainer>
+    <SiderContainer
+      animation={siderAnimation.animation}
+      animationdirection={siderAnimation.animationDirection}
+      onClick={onSiderButtonClick}
+    >
+      {isMobile
+        ? (
+          <SiderMobileButton>
+            { siderAnimation.animationDirection === 'normal'
+              ? <MenuUnfoldOutlined />
+              : <MenuFoldOutlined />}
+          </SiderMobileButton>
+        ) : null}
+      <Title>Categorias</Title>
       {hasSearched
         ? (
           <Button
             margin="10px 0"
+            mobileMargin="10px 0"
             background="red"
             color="white"
             onClick={resetSearch}
@@ -51,6 +76,7 @@ function Sider() {
           }
           border="none"
           onClick={() => onCategoryClick(category)}
+          mobileMargin="10px 0"
         >
           {category}
         </Button>

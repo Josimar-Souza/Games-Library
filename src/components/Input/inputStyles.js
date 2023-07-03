@@ -4,13 +4,17 @@ import { Input, Form } from 'antd';
 export const CustomFormItem = styled(Form.Item)`
   margin: ${({ margin }) => margin};
   width: ${({ width }) => width};
+
+  @media only screen and (max-width: 512px) {
+    width: ${({ mobilewidth }) => mobilewidth};
+  }
 `;
 
 export const CustomInput = styled(Input)`
   background: ${({ background }) => background};
   border: ${({ border }) => border};
   border-width: ${({ borderwidth }) => borderwidth};
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ borderradius }) => borderradius};
   width: 100%;
 
   &:hover {

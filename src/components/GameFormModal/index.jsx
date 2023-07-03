@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 import { Form, Divider } from 'antd';
 import PropTypes from 'prop-types';
 import {
@@ -153,7 +154,7 @@ function GameFormModal({
   return (
     <CustomModal
       open={open}
-      width="60%"
+      width={isMobile ? '90%' : '60%'}
       onCancel={onCancel}
       title={title}
       footer={[]}
@@ -332,6 +333,7 @@ function GameFormModal({
             background="red"
             color="white"
             onClick={onCancel}
+            mobileMargin="0 10px"
           >
             Cancelar
           </Button>
@@ -341,6 +343,7 @@ function GameFormModal({
             color="white"
             htmlType="submit"
             isLoading={isLoadingGame}
+            mobileMargin="0 10px"
           >
             Salvar
           </Button>

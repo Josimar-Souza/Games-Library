@@ -21,6 +21,13 @@ export const GamesCardContainer = styled.div`
   padding: 10px;
   margin-top: 100px;
   width: 80%;
+
+  @media only screen and (max-width: 512px) {
+    align-items: center;
+    flex-direction: column;
+    margin-top: 120px;
+    width: 100%;
+  }
 `;
 
 export const FeedbackMessage = styled.h1`

@@ -9,6 +9,12 @@ export const HeaderContainer = styled.div`
   position: fixed;
   width: 100%;
   z-index: 1;
+
+  @media only screen and (max-width: 512px) {
+    flex-direction: column;
+    height: 120px;
+    position: fixed;
+  }
 `;
 
 export const HeaderTitle = styled.h1`

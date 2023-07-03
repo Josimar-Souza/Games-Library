@@ -69,12 +69,19 @@ function GamesContext({ children }) {
 
   useEffect(() => {
     sendNotification(
-      'Esse projeto utiliza uma api própria que foi publicada no Render gratuitamente e pode estar hibernando, então se não carregar, por favor recarrege a página até aparecer',
+      'Esse projeto utiliza uma api própria que foi publicada no Render gratuitamente e pode estar hibernando, por isso o carregamento pode demorar um pouco na primeira vez',
     );
 
     getAllGames();
     getAllCategories();
   }, []);
+
+  useEffect(() => {
+    if (games.length === 0 || categories.length === 0) {
+      getAllGames();
+      getAllCategories();
+    }
+  }, [games, categories]);
 
   const contextValues = useMemo(() => ({
     games,

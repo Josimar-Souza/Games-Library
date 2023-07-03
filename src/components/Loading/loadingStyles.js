@@ -17,6 +17,10 @@ export const SpinContainer = styled.div`
   transform: translate(-50%, -50%);
   width: 20%;
   z-index: 2;
+
+  @media only screen and (max-width: 512px) {
+    width: 60%;
+  }
 `;
 
 export const SpinTip = styled.p`

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { isMobile } from 'react-device-detect';
 import { HeaderContainer, HeaderTitle, VerticalDivider } from './headerStyles';
 import Button from '../Button';
 import Search from '../Search';
@@ -20,10 +21,12 @@ function Header({ title }) {
 
   return (
     <HeaderContainer>
-      <HeaderTitle onClick={onTitleClicked}>{title}</HeaderTitle>
-      <VerticalDivider />
+      {!isMobile
+        ? <HeaderTitle onClick={onTitleClicked}>{title}</HeaderTitle>
+        : null }
+      {!isMobile ? <VerticalDivider /> : null}
       <Search />
-      <VerticalDivider />
+      {!isMobile ? <VerticalDivider /> : null}
       <Button
         background="none"
         border="1px solid black"
