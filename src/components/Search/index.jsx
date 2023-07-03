@@ -35,7 +35,7 @@ function Search() {
         border="1px solid black"
         borderWidth="0 0 1px 0"
         onChange={onInputChange}
-        mobileWidth="60%"
+        mobileWidth="65%"
       />
       <Button
         background="none"
@@ -43,6 +43,7 @@ function Search() {
         borderWidth="0 0 1px 0"
         fontSize="14px"
         onClick={onSearchClicked}
+        mobileMargin="0 20px 0 0"
       >
         Buscar
       </Button>
