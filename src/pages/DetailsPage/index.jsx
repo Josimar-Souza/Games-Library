@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { isMobile } from 'react-device-detect';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Popconfirm } from 'antd';
 import dayjs from 'dayjs';
@@ -40,6 +39,8 @@ function DetailsPage() {
   const [updateModal, setUpdateModal] = useState({ open: false });
 
   useEffect(() => {
+    window.scroll({ top: 0, left: 0 });
+
     const getGame = async () => {
       const gameFounded = await gamesAPI.getGameById(id);
 
