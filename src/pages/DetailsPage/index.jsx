@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Popconfirm } from 'antd';
 import dayjs from 'dayjs';
@@ -17,7 +18,7 @@ import {
   HorizontalDivider,
   PlatformsContainer,
   VerticalDivider,
-  TrailerView,
+  VideoViewer,
   MetacriticScore,
 } from './detailsPageStyles';
 import GamesAPI from '../../domain/gamesAPI';
@@ -73,6 +74,7 @@ function DetailsPage() {
     category,
     platforms,
     trailerURL,
+    themeURL,
     releaseDate,
   } = game;
 
@@ -222,6 +224,13 @@ function DetailsPage() {
             </Info>
           </HorizontalContainer>
           <HorizontalDivider />
+          {!isMobile
+            ? (
+              <>
+                <Title margin="10px 0">Tema</Title>
+                <VideoViewer src={getEmbededUrl(themeURL)} allowFullScreen />
+              </>
+            ) : null}
         </InfoSider>
         <VerticalDivider />
         <ContentContainer>
@@ -235,7 +244,14 @@ function DetailsPage() {
             ))}
           </PlatformsContainer>
           <Title margin="10px 0">Trailer</Title>
-          <TrailerView src={getEmbededUrl(trailerURL)} allowFullScreen />
+          <VideoViewer src={getEmbededUrl(trailerURL)} allowFullScreen />
+          {isMobile
+            ? (
+              <>
+                <Title margin="10px 0">Tema</Title>
+                <VideoViewer src={getEmbededUrl(themeURL)} allowFullScreen />
+              </>
+            ) : null}
         </ContentContainer>
       </InfoContainer>
       <GameFormModal

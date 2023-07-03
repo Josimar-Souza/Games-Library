@@ -124,7 +124,7 @@ export const VerticalDivider = styled.div`
   width: 1px;
 `;
 
-export const TrailerView = styled.iframe`
+export const VideoViewer = styled.iframe`
   min-height: 250px;
   width: 80%;
 
