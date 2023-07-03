@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
 import {
   SearchContainer,
   SearchIcon,
@@ -26,7 +27,7 @@ function Search() {
 
   return (
     <SearchContainer>
-      <SearchIcon />
+      {!isMobile ? <SearchIcon /> : null}
       <Input
         placeholder="Digite um termo para buscar"
         width="80%"
@@ -34,6 +35,7 @@ function Search() {
         border="1px solid black"
         borderWidth="0 0 1px 0"
         onChange={onInputChange}
+        mobileWidth="60%"
       />
       <Button
         background="none"

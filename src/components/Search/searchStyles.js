@@ -7,6 +7,10 @@ export const SearchContainer = styled.div`
   justify-content: space-around;
   height: 50px;
   width: 50%;
+
+  @media only screen and (max-width: 512px) {
+    width: 100%;
+  }
 `;
 
 export const SearchIcon = styled(SearchOutlined)`
