@@ -151,6 +151,10 @@ function GameFormModal({
     cancelCallback(false);
   };
 
+  const onFinishFailed = () => {
+    sendNotification('Não foi possível adicionar o jogo, por favor, verifique os campos e tente novamente', 'error');
+  };
+
   return (
     <CustomModal
       open={open}
@@ -160,7 +164,7 @@ function GameFormModal({
       footer={[]}
       destroyOnClose
     >
-      <Form layout="vertical" onFinish={onFinished} form={form} initialValues={info}>
+      <Form layout="vertical" onFinish={onFinished} form={form} initialValues={info} onFinishFailed={onFinishFailed}>
         <Input
           placeholder="Digite o nome do jogo"
           border="1px solid black"
@@ -222,6 +226,17 @@ function GameFormModal({
           borderRadius="0"
           label="Url do trailer"
           name="trailerURL"
+          colon
+          margin="30px 0"
+          required
+        />
+        <Input
+          placeholder="Digite a url do tema do jogo"
+          border="1px solid black"
+          borderWidth="0 0 1px 0"
+          borderRadius="0"
+          label="Url do tema"
+          name="themeURL"
           colon
           margin="30px 0"
           required
