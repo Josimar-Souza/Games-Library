@@ -13,6 +13,7 @@ export const HeaderContainer = styled.div`
   @media only screen and (max-width: 512px) {
     flex-direction: column;
     height: 120px;
+    position: static;
   }
 `;
 
