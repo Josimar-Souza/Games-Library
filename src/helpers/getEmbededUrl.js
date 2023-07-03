@@ -3,7 +3,17 @@ const getEmbededUrl = (url) => {
 
   const formattedUrl = url.replace('watch?v=', 'embed/');
 
-  return formattedUrl;
+  let finalUrl = '';
+
+  if (formattedUrl.includes('&')) {
+    const [videoUrl] = formattedUrl.split('&');
+
+    finalUrl = videoUrl;
+  } else {
+    finalUrl = formattedUrl;
+  }
+
+  return finalUrl;
 };
 
 export default getEmbededUrl;
