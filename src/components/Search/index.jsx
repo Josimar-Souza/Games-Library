@@ -11,7 +11,7 @@ import { gamesContext } from '../../context/gamesContext';
 import Pagination from '../Pagination';
 
 function Search() {
-  const { searchGameByName, setHasSearched } = useContext(gamesContext);
+  const { searchGameByName, setHasSearched, gamesToShow } = useContext(gamesContext);
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -51,7 +51,11 @@ function Search() {
           Buscar
         </Button>
       </SearchContainer>
-      <Pagination />
+      <Pagination
+        total={gamesToShow.length}
+        pageSize={12}
+        defaultCurrent={1}
+      />
     </SearchPageContainer>
   );
 }

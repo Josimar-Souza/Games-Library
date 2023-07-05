@@ -26,7 +26,7 @@ export const SiderContainer = styled.div`
   display: flex;
   flex-direction: column;
   left: 0;
-  margin-top: 120px;
+  margin-top: 140px;
   min-height: 85vh;
   position: fixed;
   width: 20%;

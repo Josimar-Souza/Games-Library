@@ -92,13 +92,13 @@ function GamesContext({ children }) {
 
   const getPageGames = () => {
     const currPageGames = gamesToShow.slice(pagination.startIndex, pagination.endIndex);
-
+    console.log(currPageGames);
     setPageGames(currPageGames);
   };
 
   useEffect(() => {
     getPageGames();
-  }, [gamesToShow]);
+  }, [gamesToShow, pagination.startIndex, pagination.endIndex]);
 
   const contextValues = useMemo(() => ({
     games,
@@ -115,7 +115,8 @@ function GamesContext({ children }) {
     hasSearched,
     isLoading,
     pageGames,
-  }), [games, categories, gamesToShow]);
+    setPagination,
+  }), [games, categories, gamesToShow, pageGames]);
 
   return (
     <gamesContext.Provider value={contextValues}>

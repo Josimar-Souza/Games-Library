@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import CustomPagination from './paginationStyles';
+import { gamesContext } from '../../context/gamesContext';
 
 function Pagination({
   total,
   pageSize,
   defaultCurrent,
 }) {
+  const { setPagination } = useContext(gamesContext);
+
+  const onPageChange = (page) => {
+    const endIndex = pageSize * page;
+    const startIndex = endIndex - pageSize;
+
+    setPagination({ startIndex, endIndex, page });
+  };
+
   return (
-    <CustomPagination total={total} pageSize={pageSize} defaultCurrent={defaultCurrent} />
+    <CustomPagination
+      total={total}
+      pageSize={pageSize}
+      defaultCurrent={defaultCurrent}
+      onChange={onPageChange}
+    />
   );
 }
 

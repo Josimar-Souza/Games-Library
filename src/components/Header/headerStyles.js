@@ -5,7 +5,7 @@ export const HeaderContainer = styled.div`
   background-color: #9AC5F4;
   display: flex;
   justify-content: space-evenly;
-  height: 100px;
+  height: 120px;
   position: fixed;
   width: 100%;
   z-index: 1;
