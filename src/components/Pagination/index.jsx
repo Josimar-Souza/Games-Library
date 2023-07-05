@@ -8,7 +8,7 @@ function Pagination({
   pageSize,
   defaultCurrent,
 }) {
-  const { setPagination } = useContext(gamesContext);
+  const { setPagination, pagination } = useContext(gamesContext);
 
   const onPageChange = (page) => {
     const endIndex = pageSize * page;
@@ -23,6 +23,7 @@ function Pagination({
       pageSize={pageSize}
       defaultCurrent={defaultCurrent}
       onChange={onPageChange}
+      current={pagination.page}
     />
   );
 }

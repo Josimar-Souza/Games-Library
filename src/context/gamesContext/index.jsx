@@ -115,6 +115,7 @@ function GamesContext({ children }) {
     hasSearched,
     isLoading,
     pageGames,
+    pagination,
     setPagination,
   }), [games, categories, gamesToShow, pageGames]);
 

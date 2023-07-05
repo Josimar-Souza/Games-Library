@@ -11,11 +11,17 @@ import { gamesContext } from '../../context/gamesContext';
 import Pagination from '../Pagination';
 
 function Search() {
-  const { searchGameByName, setHasSearched, gamesToShow } = useContext(gamesContext);
+  const {
+    searchGameByName,
+    setHasSearched,
+    gamesToShow,
+    setPagination,
+  } = useContext(gamesContext);
   const [name, setName] = useState('');
 
   useEffect(() => {
     searchGameByName(name);
+    setPagination({ startIndex: 0, endIndex: 12, page: 1 });
   }, [name]);
 
   const onInputChange = ({ target: { value } }) => {

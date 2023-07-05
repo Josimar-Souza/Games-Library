@@ -12,6 +12,7 @@ function Sider() {
     resetGamesToShow,
     hasSearched,
     setHasSearched,
+    setPagination,
   } = useContext(gamesContext);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [siderAnimation, setSiderAnimation] = useState({ animation: false, animationDirection: 'reverse' });
@@ -20,12 +21,14 @@ function Sider() {
     setSelectedCategory(category);
     searchByCategory(category);
     setHasSearched(true);
+    setPagination({ startIndex: 0, endIndex: 12, page: 1 });
   };
 
   const resetSearch = () => {
     setSelectedCategory('');
     setHasSearched(false);
     resetGamesToShow();
+    setPagination({ startIndex: 0, endIndex: 12, page: 1 });
   };
 
   const onSiderButtonClick = () => {
