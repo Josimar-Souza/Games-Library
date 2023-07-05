@@ -92,7 +92,7 @@ function GamesContext({ children }) {
 
   const getPageGames = () => {
     const currPageGames = gamesToShow.slice(pagination.startIndex, pagination.endIndex);
-    console.log(currPageGames);
+
     setPageGames(currPageGames);
   };
 
