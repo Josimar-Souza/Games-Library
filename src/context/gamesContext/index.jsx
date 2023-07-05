@@ -19,6 +19,7 @@ function GamesContext({ children }) {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasSearched, setHasSearched] = useState(false);
+  const [fetchedRight, setFetchedRight] = useState(true);
 
   const getAllGames = async () => {
     setIsLoading(true);
@@ -28,10 +29,11 @@ function GamesContext({ children }) {
     setIsLoading(false);
 
     if (gamesFounded instanceof ErrorCreator) {
-      sendNotification(gamesFounded.customMessage, 'error');
+      setFetchedRight(false);
     } else {
       setGames(gamesFounded);
       setGamesToShow(gamesFounded);
+      setFetchedRight(true);
     }
   };
 
@@ -43,9 +45,10 @@ function GamesContext({ children }) {
     setIsLoading(false);
 
     if (categoriesFounded instanceof ErrorCreator) {
-      sendNotification(categoriesFounded.customMessage, 'error');
+      setFetchedRight(false);
     } else {
       setCategories(categoriesFounded);
+      setFetchedRight(true);
     }
   };
 
@@ -77,11 +80,13 @@ function GamesContext({ children }) {
   }, []);
 
   useEffect(() => {
-    if (games.length === 0 || categories.length === 0) {
-      getAllGames();
-      getAllCategories();
+    if (!fetchedRight) {
+      if (games.length === 0 || categories.length === 0) {
+        getAllGames();
+        getAllCategories();
+      }
     }
-  }, [games, categories]);
+  }, [fetchedRight]);
 
   const contextValues = useMemo(() => ({
     games,
