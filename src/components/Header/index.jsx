@@ -2,7 +2,13 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
-import { HeaderContainer, HeaderTitle, VerticalDivider } from './headerStyles';
+import {
+  HeaderContainer,
+  HeaderTitle,
+  VerticalDivider,
+  CustomPlusIcon,
+  AddButtonContainer,
+} from './headerStyles';
 import Button from '../Button';
 import Search from '../Search';
 import GameFormModal from '../GameFormModal';
@@ -30,14 +36,15 @@ function Header({ title }) {
       {!isMobile ? <VerticalDivider /> : null}
       <Search />
       {!isMobile ? <VerticalDivider /> : null}
-      <Button
-        background="none"
-        border="1px solid black"
-        borderWidth="0 0 1px 0"
-        onClick={() => onAddCloseGameClicked(true)}
-      >
-        Adicionar jogo
-      </Button>
+      <AddButtonContainer>
+        <Button
+          background="green"
+          border="none"
+          boxShadow="none"
+          onClick={() => onAddCloseGameClicked(true)}
+          icon={<CustomPlusIcon />}
+        />
+      </AddButtonContainer>
       {isMobile
         ? (
           <Pagination

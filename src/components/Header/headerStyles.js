@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { PlusOutlined } from '@ant-design/icons';
 
 export const HeaderContainer = styled.div`
   align-items: center;
@@ -31,4 +32,16 @@ export const VerticalDivider = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   height: 90%;
   width: 1px;
+`;
+
+export const CustomPlusIcon = styled(PlusOutlined)`
+  color: white;
+`;
+
+export const AddButtonContainer = styled.div`
+  @media only screen and (max-width: 512px) {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+  }
 `;
