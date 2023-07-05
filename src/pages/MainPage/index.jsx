@@ -14,7 +14,7 @@ import Loading from '../../components/Loading';
 
 function MainPage() {
   const { pathname } = useLocation();
-  const { gamesToShow, isLoading } = useContext(gamesContext);
+  const { gamesToShow, isLoading, pageGames } = useContext(gamesContext);
 
   return (
     <MainContainer>
@@ -38,7 +38,7 @@ function MainPage() {
                       ? (
                         <FeedbackMessage>Nenhum jogo encontrado!</FeedbackMessage>
                       ) : (
-                        gamesToShow.map(({ _id, ...game }) => (
+                        pageGames.map(({ _id, ...game }) => (
                           <GameCard key={_id} game={game} _id={_id} />
                         ))
                       )}

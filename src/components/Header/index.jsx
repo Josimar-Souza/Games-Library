@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
@@ -6,10 +6,13 @@ import { HeaderContainer, HeaderTitle, VerticalDivider } from './headerStyles';
 import Button from '../Button';
 import Search from '../Search';
 import GameFormModal from '../GameFormModal';
+import Pagination from '../Pagination';
+import { gamesContext } from '../../context/gamesContext';
 
 function Header({ title }) {
   const [addGameModal, setAddGameModal] = useState({ open: false, info: {} });
   const navigate = useNavigate();
+  const { gamesToShow } = useContext(gamesContext);
 
   const onAddCloseGameClicked = (value) => {
     setAddGameModal({ ...addGameModal, open: value });
@@ -35,6 +38,14 @@ function Header({ title }) {
       >
         Adicionar jogo
       </Button>
+      {isMobile
+        ? (
+          <Pagination
+            defaultCurrent={1}
+            pageSize={12}
+            total={gamesToShow.length}
+          />
+        ) : null}
       <GameFormModal
         open={addGameModal.open}
         cancelCallback={onAddCloseGameClicked}

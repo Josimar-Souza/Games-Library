@@ -19,13 +19,13 @@ export const GamesCardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
-  margin-top: 100px;
+  margin-top: 120px;
   width: 80%;
 
   @media only screen and (max-width: 512px) {
     align-items: center;
     flex-direction: column;
-    margin-top: 120px;
+    margin-top: 200px;
     width: 100%;
   }
 `;

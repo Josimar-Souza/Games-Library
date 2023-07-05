@@ -20,6 +20,8 @@ function GamesContext({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasSearched, setHasSearched] = useState(false);
   const [fetchedRight, setFetchedRight] = useState(true);
+  const [pagination, setPagination] = useState({ startIndex: 0, endIndex: 12, page: 1 });
+  const [pageGames, setPageGames] = useState([]);
 
   const getAllGames = async () => {
     setIsLoading(true);
@@ -88,6 +90,16 @@ function GamesContext({ children }) {
     }
   }, [fetchedRight]);
 
+  const getPageGames = () => {
+    const currPageGames = gamesToShow.slice(pagination.startIndex, pagination.endIndex);
+
+    setPageGames(currPageGames);
+  };
+
+  useEffect(() => {
+    getPageGames();
+  }, [gamesToShow, pagination.startIndex, pagination.endIndex]);
+
   const contextValues = useMemo(() => ({
     games,
     gamesToShow,
@@ -102,7 +114,10 @@ function GamesContext({ children }) {
     setHasSearched,
     hasSearched,
     isLoading,
-  }), [games, categories, gamesToShow]);
+    pageGames,
+    pagination,
+    setPagination,
+  }), [games, categories, gamesToShow, pageGames]);
 
   return (
     <gamesContext.Provider value={contextValues}>
