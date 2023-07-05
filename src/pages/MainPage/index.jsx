@@ -20,7 +20,7 @@ function MainPage() {
 
   const getPageGames = () => {
     const pageGames = gamesToShow.slice(pagination.startIndex, pagination.endIndex);
-    console.log(pageGames);
+
     setGames(pageGames);
   };
 
