@@ -17,7 +17,8 @@ function Button({
   boxShadow,
   isLoading,
   mobileWidth,
-  mobileMargin
+  mobileMargin,
+  icon,
 }) {
   return (
     <CustomButton
@@ -35,6 +36,7 @@ function Button({
       loading={isLoading}
       mobilewidth={mobileWidth}
       mobilemargin={mobileMargin}
+      icon={icon}
     >
       {children}
     </CustomButton>
@@ -55,6 +57,7 @@ Button.defaultProps = {
   mobileWidth: 'fit-content',
   isLoading: false,
   mobileMargin: '0',
+  icon: null,
 };
 
 Button.propTypes = {
@@ -73,6 +76,7 @@ Button.propTypes = {
   isLoading: PropTypes.bool,
   mobileWidth: PropTypes.string,
   mobileMargin: PropTypes.string,
+  icon: PropTypes.node,
 };
 
 export default Button;

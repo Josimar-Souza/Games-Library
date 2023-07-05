@@ -7,6 +7,8 @@ function Pagination({
   total,
   pageSize,
   defaultCurrent,
+  title,
+  pageTitle,
 }) {
   const { setPagination, pagination } = useContext(gamesContext);
 
@@ -19,7 +21,7 @@ function Pagination({
 
   return (
     <PaginationContainer>
-      <PaginationTitle>Páginas:</PaginationTitle>
+      {pageTitle ? <PaginationTitle>{title}</PaginationTitle> : null}
       <CustomPagination
         total={total}
         pageSize={pageSize}
@@ -31,10 +33,17 @@ function Pagination({
   );
 }
 
+Pagination.defaultProps = {
+  title: '',
+  pageTitle: false,
+};
+
 Pagination.propTypes = {
   total: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
   defaultCurrent: PropTypes.number.isRequired,
+  title: PropTypes.string,
+  pageTitle: PropTypes.bool,
 };
 
 export default Pagination;
