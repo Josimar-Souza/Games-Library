@@ -5,14 +5,14 @@ export const HeaderContainer = styled.div`
   background-color: #9AC5F4;
   display: flex;
   justify-content: space-evenly;
-  height: 120px;
+  min-height: 120px;
   position: fixed;
   width: 100%;
   z-index: 1;
 
   @media only screen and (max-width: 512px) {
     flex-direction: column;
-    height: 150px;
+    min-height: 150px;
     position: fixed;
   }
 `;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import CustomPagination from './paginationStyles';
+import { CustomPagination, PaginationTitle, PaginationContainer } from './paginationStyles';
 import { gamesContext } from '../../context/gamesContext';
 
 function Pagination({
@@ -18,13 +18,16 @@ function Pagination({
   };
 
   return (
-    <CustomPagination
-      total={total}
-      pageSize={pageSize}
-      defaultCurrent={defaultCurrent}
-      onChange={onPageChange}
-      current={pagination.page}
-    />
+    <PaginationContainer>
+      <PaginationTitle>Páginas:</PaginationTitle>
+      <CustomPagination
+        total={total}
+        pageSize={pageSize}
+        defaultCurrent={defaultCurrent}
+        onChange={onPageChange}
+        current={pagination.page}
+      />
+    </PaginationContainer>
   );
 }
 

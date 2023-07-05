@@ -5,7 +5,8 @@ export const SearchPageContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 50px;
+  margin: 10px;
+  min-height: 50px;
   width: 50%;
 
   @media only screen and (max-width: 512px) {
