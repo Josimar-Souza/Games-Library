@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import {
   MainContainer,
@@ -14,19 +14,7 @@ import Loading from '../../components/Loading';
 
 function MainPage() {
   const { pathname } = useLocation();
-  const { gamesToShow, isLoading } = useContext(gamesContext);
-  const [pagination, setPagination] = useState({ startIndex: 0, endIndex: 12, page: 1 });
-  const [games, setGames] = useState([]);
-
-  const getPageGames = () => {
-    const pageGames = gamesToShow.slice(pagination.startIndex, pagination.endIndex);
-
-    setGames(pageGames);
-  };
-
-  useEffect(() => {
-    getPageGames();
-  }, [gamesToShow]);
+  const { gamesToShow, isLoading, pageGames } = useContext(gamesContext);
 
   return (
     <MainContainer>
@@ -50,7 +38,7 @@ function MainPage() {
                       ? (
                         <FeedbackMessage>Nenhum jogo encontrado!</FeedbackMessage>
                       ) : (
-                        games.map(({ _id, ...game }) => (
+                        pageGames.map(({ _id, ...game }) => (
                           <GameCard key={_id} game={game} _id={_id} />
                         ))
                       )}
