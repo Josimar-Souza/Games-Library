@@ -51,11 +51,14 @@ function Search() {
           Buscar
         </Button>
       </SearchContainer>
-      <Pagination
-        total={gamesToShow.length}
-        pageSize={12}
-        defaultCurrent={1}
-      />
+      {!isMobile
+        ? (
+          <Pagination
+            total={gamesToShow.length}
+            pageSize={12}
+            defaultCurrent={1}
+          />
+        ) : null}
     </SearchPageContainer>
   );
 }

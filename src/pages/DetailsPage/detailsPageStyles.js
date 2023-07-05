@@ -12,7 +12,7 @@ export const DetailsContainer = styled.main`
   background-image: url(${({ image }) => image});
   background-size: cover;
   display: flex;
-  margin-top: 100px;
+  margin-top: 120px;
   min-height: 88vh;
   justify-content: center;
   padding: 20px;
@@ -20,7 +20,7 @@ export const DetailsContainer = styled.main`
   width: 80%;
 
   @media only screen and (max-width: 512px) {
-    margin-top: 120px;
+    margin-top: 150px;
     padding: 10px;
     width: 100%;
   }
