@@ -4,7 +4,7 @@ import ErrorCreator from '../../helpers/ErrorCreator';
 const baseURL = import.meta.env.VITE_GAMES_API_URL;
 
 class GamesAPI {
-  constructor(timeout = 20000) {
+  constructor(timeout = 30000) {
     this.api = axios.create({
       timeout,
     });
