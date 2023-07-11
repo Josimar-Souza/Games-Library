@@ -234,7 +234,7 @@ function DetailsPage() {
         </InfoSider>
         <VerticalDivider />
         <ContentContainer>
-          <Title margin="20px 0">Sinopse</Title>
+          <Title margin="20px 0">Um pouco sobre o jogo</Title>
           <Info>{sinopse}</Info>
           <HorizontalDivider />
           <Title margin="20px 0">Plataformas</Title>
