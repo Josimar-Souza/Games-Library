@@ -24,7 +24,7 @@
 <p>Para desenvolver esse site utilizei algumas tecnologias para facilitar e agilizar o desenvolvimento, tecnologias essas que estão citadas abaixo:</p>
 <ul>
   <li><a target="_blank" href="https://react.dev/">React</a></li>
-  <li><a target="_blank" href="https://legacy.reactjs.org/docs/context.html">Context API</a></li>
+  <li><a target="_blank" href="https://react.dev/learn/passing-data-deeply-with-context">Context API</a></li>
   <li><a target="_blank" href="https://ant.design/">Ant Design</a></li>
   <li><a target="_blank" href="https://axios-http.com/ptbr/docs/intro">Axios</a></li>
   <li><a target="_blank" href="https://day.js.org/">DayJS</a></li>
