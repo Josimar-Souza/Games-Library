@@ -177,8 +177,8 @@ function GameFormModal({
           required
         />
         <TextArea
-          placeHolder="Digite a sinopse do jogo"
-          label="Sinopse"
+          placeHolder="Conte um pouco sobre o jogo"
+          label="Um pouco sobre o jogo"
           name="sinopse"
           colon
           margin="30px 0"
