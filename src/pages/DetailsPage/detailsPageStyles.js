@@ -20,7 +20,7 @@ export const DetailsContainer = styled.main`
   width: 80%;
 
   @media only screen and (max-width: 512px) {
-    margin-top: 208px;
+    margin-top: 150px;
     padding: 10px;
     width: 100%;
   }
