@@ -77,6 +77,7 @@ function GameFormModal({
     } = values;
 
     const gameValues = { ...rest };
+    const { _id } = info;
 
     gameValues.releaseDate = new Date(values.releaseDate).toJSON();
     gameValues.metacritic = {
@@ -100,8 +101,6 @@ function GameFormModal({
 
       message = 'Jogo adicionado com sucesso!';
     } else if (type === 'update') {
-      const { _id } = info;
-
       result = await gamesAPI.updateGame(gameValues, _id);
 
       message = 'Jogo atualizado com sucesso!';
@@ -116,7 +115,18 @@ function GameFormModal({
       cancelCallback(false);
 
       getAllGames();
-      navigate('/');
+
+      let id;
+
+      if (_id !== null) {
+        id = _id;
+      } else {
+        const { gameAdded: { _id: addedId } } = result;
+
+        id = addedId;
+      }
+
+      navigate(`/details/${id}`);
     }
   };
 
