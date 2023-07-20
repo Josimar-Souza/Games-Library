@@ -118,7 +118,7 @@ function GameFormModal({
 
       let id;
 
-      if (_id !== null) {
+      if (_id) {
         id = _id;
       } else {
         const { gameAdded: { _id: addedId } } = result;
@@ -126,7 +126,11 @@ function GameFormModal({
         id = addedId;
       }
 
-      navigate(`/details/${id}`);
+      if (type === 'add') {
+        navigate(`/details/${id}`);
+      } else {
+        window.location.reload();
+      }
     }
   };
 
