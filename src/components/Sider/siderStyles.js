@@ -27,7 +27,8 @@ export const SiderContainer = styled.div`
   flex-direction: column;
   left: 0;
   margin-top: 140px;
-  min-height: 85vh;
+  height: 81.8vh;
+  overflow-y: scroll;
   position: fixed;
   width: 20%;
 
