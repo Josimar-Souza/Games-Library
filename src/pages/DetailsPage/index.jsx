@@ -243,6 +243,7 @@ function DetailsPage() {
               <Info width="30%">{platform}</Info>
             ))}
           </PlatformsContainer>
+          <HorizontalDivider />
           <Title margin="10px 0">Trailer</Title>
           <VideoViewer src={getEmbededUrl(trailerURL)} allowFullScreen />
           {isMobile
